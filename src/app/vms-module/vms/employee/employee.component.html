@@ -1,1 +1,9 @@
-<h2>Welcome {{user?.empName}}</h2>
+<h2>Welcome {{ user?.empName }}</h2>
+<div class="container-fluid">
+  <table class="buttons">
+    <tr>
+      <td><a [routerLink]="['visitor']"><button class="button" type="button">Submit Request</button></a></td>
+      <td><a><button type="button">Manage Requests</button></a></td>
+    </tr>
+  </table>
+</div>
