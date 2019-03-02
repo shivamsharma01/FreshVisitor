@@ -90,3 +90,7 @@ button:active {
 .buttons button {
   width: 100%;
 }
+
+span {
+    padding: 2px 0px 0px 10px;
+}

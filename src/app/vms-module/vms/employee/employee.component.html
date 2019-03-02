@@ -2,8 +2,16 @@
 <div class="container-fluid">
   <table class="buttons">
     <tr>
-      <td><a [routerLink]="['visitor']"><button class="button" type="button">Submit Request</button></a></td>
-      <td><a><button type="button">Manage Requests</button></a></td>
+      <td>
+        <a [routerLink]="['visitor']">
+        <button class="button" type="button">Submit Request<span class="glyphicon glyphicon-share"></span></button>
+        </a>
+      </td>
+      <td>
+        <a>
+        <button class="button" type="button">Manage Requests<span class="glyphicon glyphicon-pencil"></span></button>
+        </a>
+      </td>
     </tr>
   </table>
 </div>
