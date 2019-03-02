@@ -1,6 +1,5 @@
 import { Component }        from '@angular/core';
-import { Router,
-         NavigationExtras } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService }      from '../auth/auth.service';
 
 @Component({
@@ -19,21 +18,26 @@ export class LoginComponent {
     this.message = 'Logged ' + (this.authService.isLoggedIn ? 'in' : 'out');
   }
 
-  login() {
-    console.log('login called');
+  loginEmployee(empNumber) {
     
     this.message = 'Trying to log in ...';
 
-    this.authService.login().subscribe(() => {
+    this.authService.loginEmployee(empNumber).subscribe(route => {
+      console.log(route);
       this.setMessage();
       if (this.authService.isLoggedIn) {
-        // Get the redirect URL from our auth service
-        // If no redirect has been set, use the default
-        console.log(this.authService.redirectUrl);
-        let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/admin';
-        console.log(redirect);
-        // Redirect the user
-        this.router.navigate([redirect]);
+        this.router.navigate([route]);
+      }
+    });
+  }
+
+  loginGuest() {
+    this.message = 'Trying to log in ...';
+    this.authService.loginGuest().subscribe(route => {
+      console.log(route);
+      this.setMessage();
+      if (this.authService.isLoggedIn) {
+        this.router.navigate([route]);
       }
     });
   }
@@ -42,11 +46,5 @@ export class LoginComponent {
     this.authService.logout();
     this.setMessage();
   }
+
 }
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
-*/

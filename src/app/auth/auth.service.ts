@@ -1,34 +1,56 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 
-import { Observable, of } from 'rxjs';
-import { tap, delay } from 'rxjs/operators';
+import { Observable, of, Subject, BehaviorSubject } from "rxjs";
+import { delay, map } from "rxjs/operators";
+import { ROLE } from "./roles";
+import { User } from "../model/user";
+import { users } from "../model/users";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root"
 })
 export class AuthService {
+  loginStatus: Subject<string> = new BehaviorSubject('Login');
   isLoggedIn = false;
-
-  // store the URL so we can redirect after logging in
+  user: User;
   redirectUrl: string;
 
-  login(): Observable<boolean> {
-    console.log('auth service called');
-    
+  loginEmployee(empNumber: number): Observable<string> {
+    return of(this.mockBackend(empNumber)).pipe(
+      delay(1000),
+      map(val => {
+        if (!!val) {
+          this.user.isAuthenticated = true;
+          return this.getRoute(ROLE.Employee);
+        }
+      })
+    );
+  }
+
+  loginGuest(): Observable<string> {
+    this.isLoggedIn = true;
     return of(true).pipe(
       delay(1000),
-      tap(val => this.isLoggedIn = true)
+      //,tap()
+      map(val => this.getRoute(ROLE.Guest))
     );
+  }
+
+  mockBackend(empNumber: number): boolean {
+    this.user = users.find(user => user.empNumber === empNumber);
+    return this.isLoggedIn = !!this.user;
+  }
+
+  getRoute(type) {
+    if (type === ROLE.Employee) {
+      return "vms/employee";
+    } else {
+      return "vms/guest";
+    }
   }
 
   logout(): void {
     this.isLoggedIn = false;
+    this.user = null;
   }
 }
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
-*/

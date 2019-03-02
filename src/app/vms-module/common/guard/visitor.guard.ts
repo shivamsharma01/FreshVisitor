@@ -4,15 +4,14 @@ import {
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
   CanActivateChild,
-  NavigationExtras,
   CanLoad, Route
 }                           from '@angular/router';
-import { AuthService }      from './auth.service';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
+export class VisitorGuard implements CanActivate, CanActivateChild, CanLoad {
   constructor(private authService: AuthService, private router: Router) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
@@ -26,14 +25,13 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
 
   canLoad(route: Route): boolean {
     let url = `/${route.path}`;
-    console.log('canLoad called');    
-    console.log('url is ',url);
     return this.checkLogin(url);
   }
 
   checkLogin(url: string): boolean {
-    if (this.authService.isLoggedIn) { return true; }
-    this.authService.redirectUrl = url;
+    if (this.authService.isLoggedIn) {
+      return true;
+    }
     this.router.navigate(['/login']);
     return false;
   }

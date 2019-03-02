@@ -1,8 +1,6 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "allowJs": true,
-    "declarationMap": true,
     "outDir": "../out-tsc/app",
     "types": []
   },

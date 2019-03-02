@@ -1,1 +1,17 @@
-<router-outlet></router-outlet>
+<!-- <div class="bg-contact3">
+    <div class="form-title"><button (click)=toggle()>{{ authService.isLoggedIn ? 'Log Out' : 'Login'}}</button>
+        <span class="contact3-form-title animated bounce delay-2s">{{title}}</span>
+    </div>
+</div> -->
+<div class="container-fluid">
+    <div class="row black-background padding-all">
+        <div class="col-lg-10 animated bounce delay-2s" style="padding-left: 0px">
+                <span class="app-title">{{title}}</span>
+        </div>
+        <div class="col-lg-2">
+            <button class="button-logout" (click)=toggle()>{{ authService.isLoggedIn ? 'Log Out' : 'Login'}}</button>
+        </div>
+    </div>
+    
+    <router-outlet></router-outlet>
+</div> 

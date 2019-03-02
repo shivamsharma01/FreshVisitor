@@ -22,10 +22,10 @@ const appRoutes: Routes = [
   },
   {
     path: 'vms',
-    loadChildren: './visitor/visitor.module#VisitorModule',
+    loadChildren: './vms-module/vms.module#VMSModule',
     canLoad: [AuthGuard]
   },
-  { path: '',   redirectTo: 'home', pathMatch: 'full' },
+  { path: '',   redirectTo: 'vms', pathMatch: 'full' },
   { path: '**',   redirectTo: 'error' },
   
 ];

@@ -1,0 +1,38 @@
+.container-fluid {
+    width: 100%;
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-image: linear-gradient(0deg,rgba(255,255,255,0.3),rgba(255,0,150,0.3)), url('/assets/images/bg-01.jpg'); 
+}
+
+.button-logout {
+    display: inline;
+    font-family: Poppins-Regular;
+    font-size: 39px;
+    color: #fff;
+    line-height: 1.2;
+    text-align: center;
+    text-transform: uppercase;
+    padding-bottom: 20px;
+}
+
+.app-title {
+    display: block;
+    font-family: Poppins-Extra-Bold;
+    font-size: 39px;
+    color: #fff;
+    line-height: 1.2;
+    text-align: center;
+    text-transform: uppercase;
+    padding-bottom: 20px;
+  }
+
+.black-background {    
+    background: #000000;
+}
+
+.padding-all {
+    padding: 10px 0px 10px 0px;
+}

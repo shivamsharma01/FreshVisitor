@@ -1,0 +1,9 @@
+<div class="container">
+  <h2>Employee Details</h2>
+  <div class="form-group">
+    <div class="col-sm-12">
+      <input type="text" class="form-control" [formControl]="empNumber" id="enumber" placeholder="Enter Employee Number" name="enumber">
+    </div>
+  </div>
+  <button type="button" class="btn btn-primary btn-lg btn-block" (click)="validateEmployeeNumber()">Submit</button>
+</div>
