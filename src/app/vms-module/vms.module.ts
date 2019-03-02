@@ -10,6 +10,7 @@ import { ContainerComponent } from './common/container/container.component';
 import { BasicDetailsComponent } from './vms/basic-details/basic-details.component';
 import { EmployeeComponent } from './vms/employee/employee.component';
 import { VisitorComponent } from './vms/visitor/visitor.component';
+import { ManageComponent } from './manage/manage.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { VisitorComponent } from './vms/visitor/visitor.component';
     ContainerComponent,
     EmployeeComponent,
     VisitorComponent,
-    BasicDetailsComponent
+    BasicDetailsComponent,
+    ManageComponent
   ],
   providers: [],
 })

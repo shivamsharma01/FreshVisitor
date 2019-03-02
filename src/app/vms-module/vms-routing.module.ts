@@ -7,6 +7,8 @@ import { BasicDetailsComponent } from "./vms/basic-details/basic-details.compone
 import { EmployeeComponent } from "./vms/employee/employee.component";
 import { VisitorComponent } from "./vms/visitor/visitor.component";
 import { VisitorGuard } from "./common/guard/visitor.guard";
+import { EmployeeGuard } from "./common/guard/employee.guard";
+import { ManageComponent } from "./manage/manage.component";
 
 const visitorRoutes: Routes = [
   {
@@ -20,12 +22,17 @@ const visitorRoutes: Routes = [
       {
         path: "employee",
         component: EmployeeComponent,
-        canLoad: [VisitorGuard]
+        canLoad: [EmployeeGuard]
       },
       {
         path: "visitor",
         component: VisitorComponent,
         canLoad: [VisitorGuard]
+      },
+      {
+        path: "manage",
+        component: ManageComponent,
+        canLoad: [EmployeeGuard]
       }
     ]
   },

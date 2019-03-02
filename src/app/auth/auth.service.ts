@@ -45,7 +45,7 @@ export class AuthService {
     if (type === ROLE.Employee) {
       return "vms/employee";
     } else {
-      return "vms/guest";
+      return "vms/visitor";
     }
   }
 
