@@ -1,5 +1,6 @@
 * {
     text-align: center;
+    padding: 0px;
 }
 
 .black-background {    
@@ -18,15 +19,23 @@
 .app-top  {
     font-family: Poppins-Regular;
     font-size: 39px;
-    color: #fff;
     text-align: center;
     text-transform: uppercase;
+    overflow: -webkit-paged-x;
 }
 
 button {
     border-radius: 5px;
-    position: absolute;
+    border: 1px solid black;
+    width: 100%;
+}
+
+.header-left {
+    color: white;
+    background-color: black;
+}
+
+.header-right {
     color: black;
     background-color: white;
-    right: 0;
 }
