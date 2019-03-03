@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { EmployeeService } from '../common/service/employee.service';
 
 @Component({
   selector: 'app-visitor-form',
@@ -9,13 +8,10 @@ import { EmployeeService } from '../common/service/employee.service';
 export class VMSComponent implements OnInit {
   employeeNumber: number;
 
-  constructor(private employeeService: EmployeeService) { }
+  constructor() { }
 
   ngOnInit() {
     this.employeeNumber = null;
-    this.employeeService.successEmployee.subscribe(data => {
-      this.employeeNumber = data;
-    });
   }
 
 
