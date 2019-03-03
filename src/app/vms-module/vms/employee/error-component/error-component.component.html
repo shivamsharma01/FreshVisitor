@@ -1,0 +1,8 @@
+<div *ngIf="control.invalid && (control.dirty || control.touched)" class="alert alert-danger">
+  <div *ngIf="control.errors.required">
+      {{display}} is required.
+  </div>
+  <div *ngIf="control.errors.minlength || control.errors.maxlength">
+      {{display}} length is not valid.
+  </div>
+</div>

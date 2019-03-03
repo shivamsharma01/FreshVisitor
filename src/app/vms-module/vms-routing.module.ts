@@ -26,9 +26,7 @@ const visitorRoutes: Routes = [
         ]
       },
     ]
-  },
-  { path: "", redirectTo: "" },
-  { path: "**", component: VMSComponent }
+  }
 ];
 
 @NgModule({

@@ -9,6 +9,8 @@ import { VMSComponent } from './vms/vms.component';
 import { EmployeeComponent } from './vms/employee/employee.component';
 import { ManageRequestComponent } from './vms/employee/manage-request/manage-request.component';
 import { CreateRequestComponent } from './vms/employee/create-request/create-request.component';
+import { ErrorComponentComponent } from './vms/employee/error-component/error-component.component';
+import { FormControlComponentComponent } from './vms/employee/form-control-component/form-control-component.component';
 
 @NgModule({
   imports: [
@@ -22,6 +24,8 @@ import { CreateRequestComponent } from './vms/employee/create-request/create-req
     EmployeeComponent,
     ManageRequestComponent,
     CreateRequestComponent,
+    ErrorComponentComponent,
+    FormControlComponentComponent,
   ],
   providers: [],
 })

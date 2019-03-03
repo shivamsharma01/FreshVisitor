@@ -7,6 +7,16 @@ td {
     padding: 10px;
 }
 
+.buttons {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.buttons button {
+  width: 100%;
+}
+
 button {
   font-family: Poppins-Italic;
   display: inline-block;
@@ -84,15 +94,6 @@ button:active {
   -moz-transform: translate(0, 4px);
   -o-transform: translate(0, 4px);
   transform: translate(0, 4px);
-}
-
-.buttons {
-  width: 100%;
-  table-layout: fixed;
-  border-collapse: collapse;
-}
-.buttons button {
-  width: 100%;
 }
 
 span {

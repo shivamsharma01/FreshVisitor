@@ -1,16 +1,12 @@
-<div class="jumbotron">
-  <table class="buttons">
-    <tr>
-      <td>
-        <a [routerLink]="['create']">
-          <button class="button" type="button">Submit Request<span class="glyphicon glyphicon-share"></span></button>
-        </a>
-      </td>
-      <td>
-        <a [routerLink]="['manage']">
-          <button class="button" type="button">Manage Requests<span class="glyphicon glyphicon-pencil"></span></button>
-        </a>
-      </td>
-    </tr>
-  </table>
+<div class="jumbotron create-request">
+  <form class="form-horizontal" [formGroup]="createForm">
+    <app-form-control-component [name]="'requesterName'" [display]="'Requester Name'" [control]="createForm.get('requesterName')"></app-form-control-component>
+    <app-form-control-component [name]="'requesterId'" [display]="'Requester Employee Id'" [control]="createForm.get('requesterId')"></app-form-control-component>
+    <app-form-control-component [name]="'visitorName'" [display]="'Visitor Name'" [control]="createForm.get('visitorName')"></app-form-control-component>
+    <app-form-control-component [name]="'visitorMobileNo'" [display]="'Visitor Mobile No'" [control]="createForm.get('visitorMobileNo')"></app-form-control-component>
+    <app-form-control-component [name]="'visitorEmailId'" [display]="'Visitor Email Id'" [control]="createForm.get('visitorEmailId')"></app-form-control-component>
+    <app-form-control-component [name]="'visitorUIdType'" [display]="'Visitor Unique Id Type'" [control]="createForm.get('visitorUIdType')"></app-form-control-component>
+    <app-form-control-component [name]="'visitorUId'" [display]="'Visitor Unique Id'" [control]="createForm.get('visitorUId')"></app-form-control-component>
+    <app-form-control-component [name]="'remarks'" [display]="'Any Additional Remarks'" [control]="createForm.get('remarks')"></app-form-control-component>
+  </form>
 </div>
