@@ -118,12 +118,6 @@ button:hover {
     cursor: pointer;
 }
 
-h1,
-h2 {
-  font-family: Poppins-Bold, sans-serif;
-  color: rgba(255, 255, 255, 0.8);
-}
-
 .container-contact3 {
   width: 100%;
   display: -webkit-box;
