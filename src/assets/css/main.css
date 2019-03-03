@@ -353,19 +353,6 @@ textarea.input3 {
   }
 }
 
-
-/*==================================================================
-[ Restyle Radio ]*/
-.wrap-contact3-form-radio {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  flex-wrap: wrap;
-  padding-bottom: 37px;
-}
-
 .input-radio3 {
   display: none;
 }

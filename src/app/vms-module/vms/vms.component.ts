@@ -6,12 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./vms.component.css']
 })
 export class VMSComponent implements OnInit {
-  employeeNumber: number;
 
   constructor() { }
 
   ngOnInit() {
-    this.employeeNumber = null;
   }
 
 

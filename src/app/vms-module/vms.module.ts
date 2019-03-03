@@ -6,7 +6,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { VMSRoutingModule } from './vms-routing.module';
 
 import { VMSComponent } from './vms/vms.component';
-import { ContainerComponent } from './common/container/container.component';
 import { EmployeeComponent } from './vms/employee/employee.component';
 import { ManageRequestComponent } from './vms/employee/manage-request/manage-request.component';
 import { CreateRequestComponent } from './vms/employee/create-request/create-request.component';
@@ -20,7 +19,6 @@ import { CreateRequestComponent } from './vms/employee/create-request/create-req
   ],
   declarations: [
     VMSComponent,
-    ContainerComponent,
     EmployeeComponent,
     ManageRequestComponent,
     CreateRequestComponent,

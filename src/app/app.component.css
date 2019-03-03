@@ -9,7 +9,7 @@
 
 .container-fluid {
     width: 100%;
-    min-height: 100vh;
+    height: 100%;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -21,7 +21,6 @@
     font-size: 39px;
     text-align: center;
     text-transform: uppercase;
-    overflow: -webkit-paged-x;
 }
 
 button {
@@ -36,6 +35,8 @@ button {
 }
 
 .header-right {
+    background-color: #485461;
     color: black;
-    background-color: white;
+    font-family: Poppins-Bold, sans-serif;
+    color: rgba(255, 255, 255);
 }
