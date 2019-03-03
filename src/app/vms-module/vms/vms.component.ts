@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-visitor-form',
+  selector: 'app-vms-form',
   templateUrl: './vms.component.html',
   styleUrls: ['./vms.component.css']
 })

@@ -7,12 +7,21 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./create-request.component.css']
 })
 export class CreateRequestComponent implements OnInit {
-  createForm: FormGroup;
+  form: FormGroup;
 
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.createForm = this.formBuilder.group({
+    this.createForm();
+    console.log(this.form.value);
+  }
+
+  submitForm() {
+
+  }
+
+  createForm() {
+    this.form = this.formBuilder.group({
       requesterName: this.formBuilder.control({value: 'Shivam Sharma', disabled: true}),
       requesterId: this.formBuilder.control({value: '123133', disabled: true}),
       visitorName: this.formBuilder.control('', [Validators.required, Validators.minLength(3), Validators.maxLength(40), Validators.pattern(/^[A-Za-z][A-Za-z ]+[A-Za-z]$/)]),
@@ -21,7 +30,8 @@ export class CreateRequestComponent implements OnInit {
       visitorUId: this.formBuilder.control('', [Validators.requiredTrue]),
       visitorUIdType: this.formBuilder.control('', [Validators.requiredTrue]),
       remarks: this.formBuilder.control('', Validators.maxLength(500)),
-    })
+    });
   }
+
 
 }
