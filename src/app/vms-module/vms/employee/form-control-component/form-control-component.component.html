@@ -2,10 +2,10 @@
   <label class="control-label col-sm-2" [for]="name">{{display}}</label>
   <div class="col-sm-10">
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-sm-6">
         <input type="text" class="form-control" [id]="name" [formControl]="control">
       </div>
-      <div class="col-sm-4">
+      <div class="col-sm-6">
         <app-error-component [control]="control" [display]="display"></app-error-component>
       </div>
     </div>

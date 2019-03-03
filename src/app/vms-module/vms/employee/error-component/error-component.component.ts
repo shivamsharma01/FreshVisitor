@@ -9,6 +9,7 @@ import { FormControl } from '@angular/forms';
 export class ErrorComponentComponent implements OnInit {
   @Input() display: string;
   @Input() control: FormControl;
+  object = Object;
 
   constructor() { }
 

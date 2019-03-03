@@ -7,4 +7,5 @@ export class CreateForm {
     visitorName: string;
     visitorUId: string;
     visitorUIdType: string;
+    submissionDate: Date;
 }
