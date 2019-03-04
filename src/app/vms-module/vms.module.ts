@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MyDatePickerModule } from 'mydatepicker';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { VMSRoutingModule } from './vms-routing.module';
 
@@ -18,8 +19,9 @@ import { FormControlComponentComponent } from './vms/employee/form-control-compo
     CommonModule,
     RouterModule,
     ReactiveFormsModule,
-    VMSRoutingModule,
-    MyDatePickerModule
+    MyDatePickerModule,
+    NgxSpinnerModule,
+    VMSRoutingModule
   ],
   declarations: [
     VMSComponent,

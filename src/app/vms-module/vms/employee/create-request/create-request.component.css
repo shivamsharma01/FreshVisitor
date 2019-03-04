@@ -81,3 +81,12 @@ button:hover, button:active, button:focus {
   background-color: #614853fa;
 }
  
+h2 {
+  font-family: Poppins-Italic, sans-serif;
+  display: inline;
+}
+
+.text-qck h2, .text-qck button {
+  text-align: left;
+  font-size: 1em;
+}

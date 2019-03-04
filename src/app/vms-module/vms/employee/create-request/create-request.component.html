@@ -1,5 +1,8 @@
+<ngx-spinner bdOpacity = 0.9 bdColor = "#333" size = "large" color = "#fff" type = "ball-atom" fullScreen = "false">
+  <p style="color: white" > Loading... </p>
+</ngx-spinner>
+
 <div class="jumbotron create-request">
-  <!-- <button>create duplicate</button> -->
   <form class="form-horizontal" [formGroup]="form">
     <app-form-control-component [name]="'requesterName'" [display]="'Requester Name'" [control]="form.get('requesterName')"></app-form-control-component>
     <app-form-control-component [name]="'requesterId'" [display]="'Requester Employee Id'" [control]="form.get('requesterId')"></app-form-control-component>
