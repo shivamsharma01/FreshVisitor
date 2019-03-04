@@ -39,6 +39,7 @@ export class CreateRequestComponent implements OnInit {
       visitorEmailId: this.formBuilder.control('', [Validators.required, Validators.email, Validators.pattern(/^[A-Za-z0-9_.]{3,}@[A-Za-z]+(\.[a-z]{2,5}){1,2}$/)]),
       visitorUIdType: this.formBuilder.control('', [Validators.required]),
       visitorUId: this.formBuilder.control('', [Validators.required]),
+      visitLocation: this.formBuilder.control('', [Validators.required]),
       visitorFromDate: [null, Validators.required],
       visitorToDate: [null, Validators.required],
       remarks: this.formBuilder.control('', Validators.maxLength(500))
