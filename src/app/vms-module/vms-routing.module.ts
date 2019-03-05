@@ -2,29 +2,31 @@ import { NgModule } from "@angular/core";
 
 import { RouterModule, Routes } from "@angular/router";
 
-import { VMSComponent } from "./vms/vms.component";
-import { EmployeeComponent } from "./vms/employee/employee.component";
-import { CreateRequestComponent } from "./vms/employee/create-request/create-request.component";
-import { ManageRequestComponent } from "./vms/employee/manage-request/manage-request.component";
+import { VisitorTypeGuard } from "./employee/employee-dashboard/guard/visitor-type.guard";
+
+import { EmployeeComponent } from "./employee/employee.component";
+import { EmployeeDashboardComponent } from "./employee/employee-dashboard/employee-dashboard.component";
+import { CreateRequestComponent } from "./employee/employee-dashboard/create-request/create-request.component";
+import { ManageRequestComponent } from "./employee/employee-dashboard/manage-request/manage-request.component";
 
 const visitorRoutes: Routes = [
   {
-    path: "",
-    component: VMSComponent,
+    path: "employee",
+    component: EmployeeComponent,
     children: [
       {
-        path: "employee",
-        component: EmployeeComponent, children: [
-          {
-            path: "create",
-            component: CreateRequestComponent
-          },
-          {
-            path: "manage",
-            component: ManageRequestComponent
-          }
-        ]
+        path: "employee-dashboard",
+        component: EmployeeDashboardComponent
       },
+      {
+        path: "create/:type",
+        component: CreateRequestComponent,
+        canActivate: [VisitorTypeGuard]
+      },
+      {
+        path: "manage",
+        component: ManageRequestComponent
+      }
     ]
   }
 ];

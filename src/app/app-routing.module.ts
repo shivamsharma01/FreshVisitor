@@ -25,7 +25,7 @@ const appRoutes: Routes = [
     loadChildren: "./vms-module/vms.module#VMSModule",
     canLoad: [AuthGuard]
   },
-  { path: "", redirectTo: "vms/employee/create", pathMatch: "full" },
+  { path: "", redirectTo: "vms/employee/employee-dashboard", pathMatch: "full" },
   { path: "**", redirectTo: "error" }
 ];
 

@@ -43,7 +43,7 @@ export class AuthService {
 
   getRoute(type) {
     if (type === ROLE.Employee) {
-      return "vms/employee";
+      return "vms/employee/employee-dashboard";
     } else {
       return "vms/visitor";
     }

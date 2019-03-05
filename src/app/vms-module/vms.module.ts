@@ -7,12 +7,12 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { VMSRoutingModule } from './vms-routing.module';
 
-import { VMSComponent } from './vms/vms.component';
-import { EmployeeComponent } from './vms/employee/employee.component';
-import { ManageRequestComponent } from './vms/employee/manage-request/manage-request.component';
-import { CreateRequestComponent } from './vms/employee/create-request/create-request.component';
-import { ErrorComponentComponent } from './vms/employee/error-component/error-component.component';
-import { FormControlComponent } from './vms/employee/form-control/form-control.component';
+import { EmployeeComponent } from './employee/employee.component';
+import { EmployeeDashboardComponent } from './employee/employee-dashboard/employee-dashboard.component';
+import { ManageRequestComponent } from './employee/employee-dashboard/manage-request/manage-request.component';
+import { CreateRequestComponent } from './employee/employee-dashboard/create-request/create-request.component';
+import { ErrorComponentComponent } from './employee/employee-dashboard/error-component/error-component.component';
+import { FormControlComponent } from './employee/employee-dashboard/form-control/form-control.component';
 
 @NgModule({
   imports: [
@@ -24,12 +24,12 @@ import { FormControlComponent } from './vms/employee/form-control/form-control.c
     VMSRoutingModule
   ],
   declarations: [
-    VMSComponent,
     EmployeeComponent,
+    EmployeeDashboardComponent,
     ManageRequestComponent,
     CreateRequestComponent,
-    ErrorComponentComponent,
     FormControlComponent,
+    ErrorComponentComponent,
   ],
   providers: [],
 })

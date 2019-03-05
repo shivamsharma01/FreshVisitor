@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators, FormArray } from "@angular/forms";
-import { VisitorService } from "src/app/vms/service/visitor.service";
-import { IMyOptions } from "mydatepicker";
 import { NgxSpinnerService } from "ngx-spinner";
+import { VisitorService } from "src/app/vms-module/service/visitor.service";
+import { IMyOptions } from "mydatepicker";
 
 @Component({
   selector: "app-create-request",
@@ -18,7 +18,8 @@ export class CreateRequestComponent implements OnInit {
     private formBuilder: FormBuilder,
     private visitorService: VisitorService,
     private spinner: NgxSpinnerService
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
     this.configureDatePicker();
