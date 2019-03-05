@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { FormGroup, FormBuilder, Validators, FormArray } from "@angular/forms";
 import { VisitorService } from "src/app/vms/service/visitor.service";
 import { IMyOptions } from "mydatepicker";
 import { NgxSpinnerService } from "ngx-spinner";
@@ -10,7 +10,8 @@ import { NgxSpinnerService } from "ngx-spinner";
   styleUrls: ["./create-request.component.css"]
 })
 export class CreateRequestComponent implements OnInit {
-  form: FormGroup;
+  visitorForm: FormGroup;
+  visitorFormArray: FormArray;
   public myDatePickerOptions: IMyOptions;
 
   constructor(
@@ -25,34 +26,15 @@ export class CreateRequestComponent implements OnInit {
     // this.spinner.show();
   }
 
-  configureDatePicker() {
-    let date = new Date();
-    this.myDatePickerOptions = {
-      dateFormat: "dd/mm/yyyy",
-      editableDateField: false,
-      disableUntil: new CustomDate(
-        date.getFullYear(),
-        date.getMonth() + 1,
-        date.getDate() - 1
-      ),
-      disableSince: new CustomDate(
-        date.getFullYear(),
-        date.getMonth() + 2,
-        date.getDate()
-      )
-    };
-  }
-
-  submitForm() {
-    const controls = Object.keys(this.form.controls);
-    for (let control of controls) {
-      this.form.get(control).markAsTouched();
-    }
-    this.visitorService.submitForm(this.form);
-  }
-
   createForm() {
-    this.form = this.formBuilder.group({
+    this.visitorFormArray = this.formBuilder.array([this.createItem()]);
+    this.visitorForm = this.formBuilder.group({
+      visitors: this.visitorFormArray
+    });
+  }
+
+  createItem(): FormGroup {
+    return this.formBuilder.group({
       requesterName: this.formBuilder.control({
         value: "Shivam Sharma",
         disabled: true
@@ -79,43 +61,52 @@ export class CreateRequestComponent implements OnInit {
       visitorUIdType: this.formBuilder.control("", [Validators.required]),
       visitorUId: this.formBuilder.control("", [Validators.required]),
       visitLocation: this.formBuilder.control("", [Validators.required]),
-      visitorFromDate: [new Date(), Validators.required],
-      visitorToDate: [null, Validators.required],
+      visitorFromDate: [this.setDate(), Validators.required],
+      visitorToDate: [this.setDate(), Validators.required],
       remarks: this.formBuilder.control("", Validators.maxLength(500))
     });
-    this.setDate();
   }
   
-  setDate(): void {
-    let date = new Date();
-    this.form.patchValue({
-      visitorFromDate: {
-        date: {
-          year: date.getFullYear(),
-          month: date.getMonth() + 1,
-          day: date.getDate()
-        }
-      }
-    });
-    this.form.patchValue({
-      visitorFromDate: {
-        date: new CustomDate(
-          date.getFullYear(),
-          date.getMonth() + 1,
-          date.getDate()
-        )
-      },
-      visitorToDate: {
-        date: new CustomDate(
-          date.getFullYear(),
-          date.getMonth() + 1,
-          date.getDate()
-        )
-      }
-    });
+  addItem(): void {
+    this.visitorFormArray.push(this.createItem());
   }
-}
 
+  submitForm() {
+    const controls = Object.keys(this.visitorForm.controls);
+    for (let control of controls) {
+      this.visitorForm.get(control).markAsTouched();
+    }
+    this.visitorService.submitForm(this.visitorForm);
+  }
+
+  configureDatePicker() {
+    let date = new Date();
+    this.myDatePickerOptions = {
+      dateFormat: "dd/mm/yyyy",
+      editableDateField: false,
+      disableUntil: new CustomDate(
+        date.getFullYear(),
+        date.getMonth() + 1,
+        date.getDate() - 1
+      ),
+      disableSince: new CustomDate(
+        date.getFullYear(),
+        date.getMonth() + 2,
+        date.getDate()
+      )
+    };
+  }
+
+  setDate() {
+    const date = new Date();
+    return {
+      year: date.getFullYear(),
+      month: date.getMonth() + 1,
+      day: date.getDate()
+    };
+  }
+
+}
 class CustomDate {
   constructor(public year: number, public month: number, public day: number) {}
 }

@@ -2,11 +2,11 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'app-form-control-component',
-  templateUrl: './form-control-component.component.html',
-  styleUrls: ['./form-control-component.component.css']
+  selector: 'app-form-control',
+  templateUrl: './form-control.component.html',
+  styleUrls: ['./form-control.component.css']
 })
-export class FormControlComponentComponent implements OnInit {
+export class FormControlComponent implements OnInit {
   @Input() name: string;
   @Input() display: string;
   @Input() control: FormControl;
@@ -14,6 +14,7 @@ export class FormControlComponentComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log(this.control);
   }
 
 }
