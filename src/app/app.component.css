@@ -26,6 +26,9 @@ button {
     border-radius: 5px;
     border: 1px solid black;
     width: 100%;
+    outline: none !important;
+    border: none;
+    background: transparent;
 }
 
 .header-left {

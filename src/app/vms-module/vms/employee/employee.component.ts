@@ -8,11 +8,17 @@ import { AuthService } from "src/app/auth/auth.service";
   styleUrls: ["./employee.component.css"]
 })
 export class EmployeeComponent implements OnInit {
-  user: User;
+  user: User; 
+  showDropdown: boolean;
 
   constructor(private authService: AuthService) {}
 
   ngOnInit() {
     this.user = this.authService.user;
   }
+
+  buttonClick() {
+    this.showDropdown = !this.showDropdown;
+  }
+  
 }
