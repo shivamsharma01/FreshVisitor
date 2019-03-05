@@ -1,4 +1,17 @@
 @charset "UTF-8";
+
+.jumbotron.create-request{
+  background: transparent;
+  padding: 15px;
+}
+ 
+.visitor-form {
+  background: #eee;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
 .custom-select {
   position: relative;
   display: block;
@@ -33,7 +46,6 @@ body {
   margin-top: 80px;
   background-color: #1A004A;
 }
-
 
 
 button {
@@ -75,7 +87,7 @@ button {
     -moz-transform 0.1s ease-in-out;
   -o-transition: background-color 0.2s ease-in-out,
     -o-transform 0.1s ease-in-out;
-  transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+  transition: background-color 0.1s ease-in-out, transform 0.1s ease-in-out;
 }
 
 button:hover, button:active, button:focus {

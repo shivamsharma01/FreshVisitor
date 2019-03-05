@@ -1,7 +1,5 @@
 .jumbotron {
-    background-color: #485461;
     background: linear-gradient(315deg, #485461 0%, #28313b 74%);
     border-radius: 10px;
     margin: 50px;
-    padding: 0px 15px 0px 15px;
 }
