@@ -95,3 +95,7 @@ h2 {
 input {
   height: 40px;
 }
+
+.visitor-form {
+  margin-bottom: 20px;
+}

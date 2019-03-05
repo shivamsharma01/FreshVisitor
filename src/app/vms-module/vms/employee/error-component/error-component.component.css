@@ -6,6 +6,7 @@
 .alert-danger {
     background-color: transparent;
     border: transparent;
+    font-weight: bolder;
 }
 
 span {

@@ -1,119 +1,113 @@
 <ngx-spinner bdOpacity = 0.9 bdColor = "#333" size = "large" color = "#fff" type = "ball-atom" fullScreen = "false">
-  <p style="color: white" > Loading... </p>
+  <p style="color: white" > Loading. Please Wait...</p>
 </ngx-spinner>
-<!-- 
-<app-form-control [name]="'requesterName'" [display]="'Requester Name'" [control]="item.controls.requesterName"></app-form-control>
-<app-form-control [name]="'requesterId'" [display]="'Requester Employee Id'" [control]="item.controls.requesterId"></app-form-control>
-                 -->
 
-<div class="jumbotron create-request">
-  <form class="form-horizontal" [formGroup]="visitorForm">
-    <div formArrayName="visitors" *ngFor="let item of visitorForm.controls.visitors.controls; let i = index;">
-      <div [formGroupName]="i">
-        <div class="row">
-          <div class="col-sm-4">
-            <app-form-control [name]="'visitorName'" [display]="'Visitor Name'" [control]="item.controls.visitorName"></app-form-control>
-          </div>
-          <div class="col-sm-4">
-              <app-form-control [name]="'visitorMobileNo'" [display]="'Visitor Mobile No'" [control]="item.controls.visitorMobileNo"></app-form-control>
-          </div>
-          <div class="col-sm-4">
-              <app-form-control [name]="'visitorEmailId'" [display]="'Visitor Email Id'" [control]="item.controls.visitorEmailId"></app-form-control>
-          </div>
+<form class="jumbotron create-request form-horizontal" [formGroup]="visitorForm">
+  <div formArrayName="visitors" *ngFor="let item of visitorForm.controls.visitors.controls; let i = index;">
+    <div class="visitor-form" [formGroupName]="i">
+      <div class="row">
+        <div class="col-sm-4">
+          <app-form-control [name]="'visitorName'" [display]="'Visitor Name'" [control]="item.controls.visitorName"></app-form-control>
         </div>
-        <div class="row">
-          <div class="col-sm-4">
-            <div class="form-group">
-              <div class="row">
-                <label class="control-label col-sm-12" [for]="visitorUIdType">Visitor Unique Id Type</label>
-                <div class="col-sm-12">
-                  <label class="custom-select" for="visitorUIdType">
-                    <select id="visitorUIdType" name="visitorUIdType" formControlName="visitorUIdType">
-                      <option value="">Select an option</option>
-                      <option>Aadhar Card</option>
-                      <option>PAN Card</option>
-                      <option>Passport Number</option>
-                    </select>
-                  </label>
-                </div>
-                <div class="col-sm-12">
-                  <app-error-component [control]="item.controls.visitorUIdType" [display]="'Visitor Unique Id Type'"></app-error-component>
-                </div>
+        <div class="col-sm-4">
+            <app-form-control [name]="'visitorMobileNo'" [display]="'Visitor Mobile No'" [control]="item.controls.visitorMobileNo"></app-form-control>
+        </div>
+        <div class="col-sm-4">
+            <app-form-control [name]="'visitorEmailId'" [display]="'Visitor Email Id'" [control]="item.controls.visitorEmailId"></app-form-control>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="row">
+              <label class="control-label col-sm-12" [for]="visitorUIdType">Visitor Unique Id Type</label>
+              <div class="col-sm-12">
+                <label class="custom-select" for="visitorUIdType">
+                  <select id="visitorUIdType" name="visitorUIdType" formControlName="visitorUIdType">
+                    <option value="">Select an option</option>
+                    <option>Aadhar Card</option>
+                    <option>PAN Card</option>
+                    <option>Passport Number</option>
+                  </select>
+                </label>
               </div>
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <app-form-control [name]="'visitorUId'" [display]="'Visitor Unique Id'" [control]="item.controls.visitorUId"></app-form-control>
-          </div>
-          <div class="col-sm-4">
-            <div class="form-group">
-              <div class="row">
-                <label class="control-label col-sm-12" [for]="visitLocation">Visit Location</label>
-                <div class="col-sm-12">
-                  <label class="custom-select" for="visitLocation">
-                    <select id="visitLocation" name="visitLocation" formControlName="visitorUIdType">
-                      <option value="">Select an option</option>
-                      <option>Bangalore</option>
-                      <option>Bhubaneswar</option>
-                      <option>Chandigarh</option>
-                      <option>Chennai</option>
-                      <option>Gurgaon</option>
-                      <option>Hyderabad STP: Pearl Park</option>
-                      <option>Hyderabad SEZ: Prakriti Park</option>
-                      <option>Indore</option>
-                      <option>Jaipur</option>
-                      <option>Mangalore</option>
-                      <option>Mangalore SEZ</option>
-                      <option>Mohali</option>
-                      <option>Mysore</option>
-                      <option>Nagpur</option>
-                      <option>Pune</option>
-                      <option>Thiruvananthapuram</option>
-                    </select>
-                  </label>
-                </div>
-                <div class="col-sm-12">
-                  <app-error-component [control]="item.controls.visitLocation" [display]="'Visit Location'"></app-error-component>
-                </div>
+              <div class="col-sm-12">
+                <app-error-component [control]="item.controls.visitorUIdType" [display]="'Visitor Unique Id Type'"></app-error-component>
               </div>
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-sm-4">
-            <div class="form-group">
-              <div class="row">
-                <label class="control-label col-sm-12" [for]="visitorFromDate">Visitor Entry Date</label>
-                <div class="col-sm-12">
-                    <my-date-picker name="visitorFromDate" [options]="myDatePickerOptions" [placeholder]="placeholder" formControlName="visitorFromDate"></my-date-picker>
-                </div>
-                <div class="col-sm-12">
-                  <app-error-component [control]="item.controls.visitorFromDate" [display]="'Visitor Entry Date'"></app-error-component>
-                </div>
+        <div class="col-sm-4">
+          <app-form-control [name]="'visitorUId'" [display]="'Visitor Unique Id'" [control]="item.controls.visitorUId"></app-form-control>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="row">
+              <label class="control-label col-sm-12" [for]="visitLocation">Visit Location</label>
+              <div class="col-sm-12">
+                <label class="custom-select" for="visitLocation">
+                  <select id="visitLocation" name="visitLocation" formControlName="visitorUIdType">
+                    <option value="">Select an option</option>
+                    <option>Bangalore</option>
+                    <option>Bhubaneswar</option>
+                    <option>Chandigarh</option>
+                    <option>Chennai</option>
+                    <option>Gurgaon</option>
+                    <option>Hyderabad STP: Pearl Park</option>
+                    <option>Hyderabad SEZ: Prakriti Park</option>
+                    <option>Indore</option>
+                    <option>Jaipur</option>
+                    <option>Mangalore</option>
+                    <option>Mangalore SEZ</option>
+                    <option>Mohali</option>
+                    <option>Mysore</option>
+                    <option>Nagpur</option>
+                    <option>Pune</option>
+                    <option>Thiruvananthapuram</option>
+                  </select>
+                </label>
+              </div>
+              <div class="col-sm-12">
+                <app-error-component [control]="item.controls.visitLocation" [display]="'Visit Location'"></app-error-component>
               </div>
             </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="form-group">
-              <div class="row">
-                <label class="control-label col-sm-12" [for]="visitorToDate">Visitor Exit Date</label>
-                <div class="col-sm-12">
-                    <my-date-picker name="visitorToDate" [options]="myDatePickerOptions" [placeholder]="'use calendar'" formControlName="visitorToDate"></my-date-picker>
-                </div>
-                <div class="col-sm-12">
-                  <app-error-component [control]="item.controls.visitorToDate" [display]="'Visitor Entry Date'"></app-error-component>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-4">
-              <app-form-control [name]="'remarks'" [display]="'Any Additional Remarks'" [control]="item.controls.remarks"></app-form-control>
           </div>
         </div>
-      </div>   
-    </div>
-    <button class="button" (click)="addItem()">Add Visitor</button>
-    <button class="button" (click)="submitForm()">Submit</button>
-    <button class="button" (click)="createForm()">Reset</button> 
-  </form>
-</div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="row">
+              <label class="control-label col-sm-12" [for]="visitorFromDate">Visitor Entry Date</label>
+              <div class="col-sm-12">
+                  <my-date-picker name="visitorFromDate" [options]="myDatePickerOptions" [placeholder]="placeholder" formControlName="visitorFromDate"></my-date-picker>
+              </div>
+              <div class="col-sm-12">
+                <app-error-component [control]="item.controls.visitorFromDate" [display]="'Visitor Entry Date'"></app-error-component>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <div class="row">
+              <label class="control-label col-sm-12" [for]="visitorToDate">Visitor Exit Date</label>
+              <div class="col-sm-12">
+                  <my-date-picker name="visitorToDate" [options]="myDatePickerOptions" [placeholder]="'use calendar'" formControlName="visitorToDate"></my-date-picker>
+              </div>
+              <div class="col-sm-12">
+                <app-error-component [control]="item.controls.visitorToDate" [display]="'Visitor Entry Date'"></app-error-component>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+            <app-form-control [name]="'remarks'" [display]="'Any Additional Remarks'" [control]="item.controls.remarks"></app-form-control>
+        </div>
+      </div>
+    </div>   
+  </div>
+  <button class="button" (click)="addItem()">Add Visitor</button>
+  <button class="button" (click)="submitForm()">Submit</button>
+  <button class="button" (click)="createForm()">Reset</button> 
+</form>
