@@ -37,6 +37,16 @@
       font-family: Poppins-Regular, sans-serif;
   }
   
+.form-control, .custom-select {
+  margin: 0 auto;
+  height: 40px;
+  width: 90%;
+}
+
+.create-request .control-label {
+  text-align: center;
+}
+  
   /*---------------------------------------------*/
   a {
       font-family: Poppins-Regular;
@@ -71,10 +81,8 @@
       color: #666666;
       margin: 0px;
   }
-  
-  
-  
-  /*---------------------------------------------*/
+
+
   input {
       outline: none;
       border: none;
@@ -88,8 +96,15 @@
   textarea:focus, input:focus {
     border-color: transparent !important;
   }
-  
-  
+    
+.mydp {
+  width: 90% !important;
+}
+
+.mydp .selectiongroup {
+  height: 40px !important;
+}
+
   input::-webkit-input-placeholder { color: rgba(255,255,255,0.8);}
   input:-moz-placeholder { color: rgba(255,255,255,0.8);}
   input::-moz-placeholder { color: rgba(255,255,255,0.8);}

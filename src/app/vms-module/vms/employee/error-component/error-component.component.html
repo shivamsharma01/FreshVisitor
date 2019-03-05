@@ -1,4 +1,4 @@
-<div *ngIf="control.invalid && (control.dirty || control.touched)" class="alert alert-danger">
+<div *ngIf="control.invalid && (control.dirty || control.touched);  else emptyDiv" class="alert alert-danger">
   <span *ngIf="control.errors.required">
     <em>field is mandatory</em>
   </span>
@@ -9,3 +9,6 @@
     <em>invalid characters</em>
   </span>
 </div>
+<ng-template #emptyDiv>
+  <div class="empty-div">&nbsp;</div>
+</ng-template>

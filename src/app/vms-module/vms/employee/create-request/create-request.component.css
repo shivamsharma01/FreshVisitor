@@ -6,12 +6,13 @@
 }
 .custom-select select {
   background: transparent;
+  background-image: linear-gradient(to right, white, transparent);
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   border-radius: 3px;
   width: 100%;
-  padding: 7px 0px 10px 25px;
+  padding: 10px 0px 10px 25px;
 }
 .custom-select:after {
   position: absolute;
@@ -89,4 +90,8 @@ h2 {
 .text-qck h2, .text-qck button {
   text-align: left;
   font-size: 1em;
+}
+
+input {
+  height: 40px;
 }
