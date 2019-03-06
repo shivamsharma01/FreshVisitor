@@ -12,14 +12,15 @@ import { IMyOptions } from "mydatepicker";
 export class CreateRequestComponent implements OnInit {
   visitorForm: FormGroup;
   visitorFormArray: FormArray;
-  public myDatePickerOptions: IMyOptions;
+  myDatePickerOptions: IMyOptions;
+  maxLimit: number = 4;
+
 
   constructor(
     private formBuilder: FormBuilder,
     private visitorService: VisitorService,
     private spinner: NgxSpinnerService
-  ) {
-  }
+  ) {}
 
   ngOnInit() {
     this.configureDatePicker();
@@ -67,9 +68,13 @@ export class CreateRequestComponent implements OnInit {
       remarks: this.formBuilder.control("", Validators.maxLength(500))
     });
   }
-  
+
   addItem(): void {
     this.visitorFormArray.push(this.createItem());
+  }
+
+  removeItem(i): void {
+    this.visitorFormArray.removeAt(i);
   }
 
   submitForm() {
@@ -106,7 +111,6 @@ export class CreateRequestComponent implements OnInit {
       day: date.getDate()
     };
   }
-
 }
 class CustomDate {
   constructor(public year: number, public month: number, public day: number) {}
