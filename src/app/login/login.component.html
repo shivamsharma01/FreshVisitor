@@ -1,11 +1,5 @@
 <div class="container">    
     <h2>LOGIN</h2>
     <p>Current Status: {{message}}</p>
-    <p>
-      <button (click)="loginEmployee(1111)"  *ngIf="!authService.isLoggedIn">Login - Employee</button>
-      <br>
-      <button (click)="loginGuest()"  *ngIf="!authService.isLoggedIn">Login - Guest</button>
-      <br>
-      <button (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button>
-    </p>
+    <button (click)="login(1111)"  *ngIf="!authService.isLoggedIn">Login - Employee</button>
 </div>

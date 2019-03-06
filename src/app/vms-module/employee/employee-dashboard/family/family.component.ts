@@ -1,7 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators, FormArray } from "@angular/forms";
-import { ActivatedRoute, ParamMap } from "@angular/router";
-import { switchMap } from 'rxjs/operators';
 import { NgxSpinnerService } from "ngx-spinner";
 import { AuthService } from "src/app/auth/auth.service";
 import { VisitorService } from "src/app/vms-module/service/visitor.service";
@@ -21,7 +19,6 @@ export class FamilyRequestComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
     private spinner: NgxSpinnerService,
     private visitorService: VisitorService
   ) {}
@@ -30,17 +27,16 @@ export class FamilyRequestComponent implements OnInit {
     this.myDatePickerOptions = this.visitorService.configureDatePicker();
     this.createForm();
   }
+
   createForm() {
     this.visitorForm = this.formBuilder.group({
       approverName: this.authService.user.empName,
       approverEmployeeNo: this.authService.user.empNumber,
       visitLocation: this.formBuilder.control("", [Validators.required]),
       visitDate: [this.visitorService.setDate(), Validators.required],
-      visitorType: null,
+      visitorType: 'family',
       visitors: this.createVisitorArray()
     });
-    this.visitorForm.removeControl
-    this.getVisitorType();
   }
 
   createVisitorArray() {
@@ -87,14 +83,6 @@ export class FamilyRequestComponent implements OnInit {
       this.spinner.hide();
     }, 1000)
     this.visitorService.submitForm(this.visitorForm);
-  }
-  
-  getVisitorType() {
-    this.route.paramMap.pipe(switchMap((params: ParamMap) => {
-      this.visitorForm.patchValue({visitorType: params.get('type')});
-      return params.get('type');
-    }))
-    .subscribe();
   }
 
 }

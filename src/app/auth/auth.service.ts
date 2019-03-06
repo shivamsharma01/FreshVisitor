@@ -15,7 +15,7 @@ export class AuthService {
   user: User;
   redirectUrl: string;
 
-  loginEmployee(empNumber: number): Observable<string> {
+  login(empNumber: number): Observable<string> {
     return of(this.mockBackend(empNumber)).pipe(
       // delay(1000),
       map(val => {
@@ -24,15 +24,6 @@ export class AuthService {
           return this.getRoute(ROLE.Employee);
         }
       })
-    );
-  }
-
-  loginGuest(): Observable<string> {
-    this.isLoggedIn = true;
-    return of(true).pipe(
-      //delay(1000),
-      //,tap()
-      map(val => this.getRoute(ROLE.Guest))
     );
   }
 
@@ -53,4 +44,5 @@ export class AuthService {
     this.isLoggedIn = false;
     this.user = null;
   }
+
 }

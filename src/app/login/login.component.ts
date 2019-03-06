@@ -18,22 +18,11 @@ export class LoginComponent {
     this.message = 'Logged ' + (this.authService.isLoggedIn ? 'in' : 'out');
   }
 
-  loginEmployee(empNumber) {
+  login(empNumber) {
     
     this.message = 'Trying to log in ...';
 
-    this.authService.loginEmployee(empNumber).subscribe(route => {
-      console.log(route);
-      this.setMessage();
-      if (this.authService.isLoggedIn) {
-        this.router.navigate([route]);
-      }
-    });
-  }
-
-  loginGuest() {
-    this.message = 'Trying to log in ...';
-    this.authService.loginGuest().subscribe(route => {
+    this.authService.login(empNumber).subscribe(route => {
       console.log(route);
       this.setMessage();
       if (this.authService.isLoggedIn) {
