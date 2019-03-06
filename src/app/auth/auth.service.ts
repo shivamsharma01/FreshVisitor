@@ -17,7 +17,7 @@ export class AuthService {
 
   loginEmployee(empNumber: number): Observable<string> {
     return of(this.mockBackend(empNumber)).pipe(
-      delay(1000),
+      // delay(1000),
       map(val => {
         if (!!val) {
           this.user.isAuthenticated = true;
@@ -30,7 +30,7 @@ export class AuthService {
   loginGuest(): Observable<string> {
     this.isLoggedIn = true;
     return of(true).pipe(
-      delay(1000),
+      //delay(1000),
       //,tap()
       map(val => this.getRoute(ROLE.Guest))
     );

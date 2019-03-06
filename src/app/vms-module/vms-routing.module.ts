@@ -8,6 +8,7 @@ import { EmployeeComponent } from "./employee/employee.component";
 import { EmployeeDashboardComponent } from "./employee/employee-dashboard/employee-dashboard.component";
 import { FamilyRequestComponent } from "./employee/employee-dashboard/family/family.component";
 import { ManageRequestComponent } from "./employee/employee-dashboard/manage-request/manage-request.component";
+import { IntervieweeRequestComponent } from "./employee/employee-dashboard/interviewee/interviewee.component";
 
 const visitorRoutes: Routes = [
   {
@@ -21,6 +22,11 @@ const visitorRoutes: Routes = [
       {
         path: "family",
         component: FamilyRequestComponent,
+        canActivate: [VisitorTypeGuard]
+      },
+      {
+        path: "interviewee",
+        component: IntervieweeRequestComponent,
         canActivate: [VisitorTypeGuard]
       },
       {
