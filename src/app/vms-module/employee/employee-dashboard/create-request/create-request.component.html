@@ -45,11 +45,11 @@
           </div>
       </div>
       <div class="add-remove-container">
-          <button class="button add-button" [disabled]="visitorFormArray.length === maxLimit" (click)="addItem()"><i class="fa fa-plus" aria-hidden="true"></i></button>
+          <button class="button add-button" [disabled]="visitorForm.get('visitors').length === maxLimit" (click)="addItem()"><i class="fa fa-plus" aria-hidden="true"></i></button>
           <button class="button remove-button" *ngIf="i !== 0" [disabled]="i == 0" (click)="removeItem(i)"><i class="fa fa-minus" aria-hidden="true"></i></button>
       </div>
     </div>   
   </div>
   <button class="button" (click)="submitForm()">Submit</button>
-  <button class="button" (click)="createForm()">Reset</button> 
+  <button class="button" (click)="resetForm()">Reset</button> 
 </form>
