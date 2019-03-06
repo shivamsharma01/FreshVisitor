@@ -14,7 +14,6 @@ export class FormControlComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.control);
   }
 
 }

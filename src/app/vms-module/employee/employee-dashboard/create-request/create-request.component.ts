@@ -1,5 +1,12 @@
 import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormBuilder, Validators, FormArray } from "@angular/forms";
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  FormArray,
+  AbstractControl,
+  FormControl
+} from "@angular/forms";
 import { NgxSpinnerService } from "ngx-spinner";
 import { VisitorService } from "src/app/vms-module/service/visitor.service";
 import { IMyOptions } from "mydatepicker";
@@ -14,7 +21,6 @@ export class CreateRequestComponent implements OnInit {
   visitorFormArray: FormArray;
   myDatePickerOptions: IMyOptions;
   maxLimit: number = 4;
-
 
   constructor(
     private formBuilder: FormBuilder,
@@ -58,7 +64,7 @@ export class CreateRequestComponent implements OnInit {
       visitorEmailId: this.formBuilder.control("", [
         Validators.required,
         Validators.email,
-        Validators.pattern(/^[A-Za-z0-9_.]{3,}@[A-Za-z]+(\.[a-z]{2,5}){1,2}$/)
+        Validators.pattern(/^[A-Za-z0-9_.]{3,}@[A-Za-z]+(\.[a-z]{2,}){1,2}$/)
       ]),
       visitorUIdType: this.formBuilder.control("", [Validators.required]),
       visitorUId: this.formBuilder.control("", [Validators.required]),
@@ -78,11 +84,18 @@ export class CreateRequestComponent implements OnInit {
   }
 
   submitForm() {
-    const controls = Object.keys(this.visitorForm.controls);
-    for (let control of controls) {
-      this.visitorForm.get(control).markAsTouched();
-    }
+    this.displayErrors(this.visitorForm);
     this.visitorService.submitForm(this.visitorForm);
+  }
+
+  displayErrors(form: AbstractControl) {
+    if (form instanceof FormControl) {
+      form.markAsTouched();
+    } else if (form instanceof FormGroup || form instanceof FormArray) {
+      Object.keys(form.controls).forEach(key => {
+        this.displayErrors(form.get(key));
+      });
+    }
   }
 
   configureDatePicker() {
