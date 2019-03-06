@@ -1,8 +1,15 @@
 @charset "UTF-8";
+.container-fluid .jumbotron {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+.jumbotron {
+  padding: 0px;
+}
 
 .jumbotron.create-request {
   background: transparent;
-  padding: 15px;
 }
 
 .visitor-form {
@@ -107,6 +114,8 @@ input {
 .visitor-form {
   margin-bottom: 20px;
   position: relative;
+  background: white;
+  border: 2px solid;
 }
 
 div.add-remove-container {
@@ -127,3 +136,12 @@ div.add-remove-container {
   background-color: grey;
 }
 
+div.header-common {
+  background: white;
+  border-radius: 0%
+}
+
+form .row {
+  border-radius: 10px;
+  margin: 0px;
+}

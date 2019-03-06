@@ -93,6 +93,7 @@ textarea:focus, input:focus {
     
 .mydp {
   width: 90% !important;
+  border: 2px solid #CCC !important;
 }
 
 .mydp .selectiongroup {

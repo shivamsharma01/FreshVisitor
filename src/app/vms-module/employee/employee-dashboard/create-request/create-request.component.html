@@ -3,6 +3,54 @@
 </ngx-spinner>
 
 <form class="jumbotron create-request form-horizontal" [formGroup]="visitorForm">
+  <div class="row header-common">
+      <div class="col-sm-4">
+        <div class="form-group">
+          <div class="row">
+            <label class="control-label col-sm-12" [for]="visitLocation">Visit Location</label>
+            <div class="col-sm-12">
+              <label class="custom-select" for="visitLocation">
+                <select id="visitLocation" name="visitLocation" formControlName="visitLocation">
+                  <option value="">Select an option</option>
+                  <option>Bangalore</option>
+                  <option>Bhubaneswar</option>
+                  <option>Chandigarh</option>
+                  <option>Chennai</option>
+                  <option>Gurgaon</option>
+                  <option>Hyderabad STP: Pearl Park</option>
+                  <option>Hyderabad SEZ: Prakriti Park</option>
+                  <option>Indore</option>
+                  <option>Jaipur</option>
+                  <option>Mangalore</option>
+                  <option>Mangalore SEZ</option>
+                  <option>Mohali</option>
+                  <option>Mysore</option>
+                  <option>Nagpur</option>
+                  <option>Pune</option>
+                  <option>Thiruvananthapuram</option>
+                </select>
+              </label>
+            </div>
+            <div class="col-sm-12">
+              <app-error-component [control]="visitorForm.controls.visitLocation" [display]="'Visit Location'"></app-error-component>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <div class="row">
+          <label class="control-label col-sm-12" [for]="visitDate">Visit Date</label>
+          <div class="col-sm-12">
+            <my-date-picker name="visitDate" [options]="myDatePickerOptions" [placeholder]="'placeholder'" formControlName="visitDate"></my-date-picker>
+          </div>
+          <div class="col-sm-12">
+            <app-error-component [control]="visitorForm.controls.visitDate" [display]="'Visitor Entry Date'"></app-error-component>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <div formArrayName="visitors" *ngFor="let item of visitorForm.controls.visitors.controls; let i = index;">
     <div class="visitor-form animated slideInRight delay-2s" [formGroupName]="i">
       <div class="row">

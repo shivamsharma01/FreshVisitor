@@ -34,20 +34,17 @@ export class CreateRequestComponent implements OnInit {
     this.visitorForm = this.formBuilder.group({
       approverName: this.authService.user.empName,
       approverEmployeeNo: this.authService.user.empNumber,
+      visitLocation: this.formBuilder.control("", [Validators.required]),
+      visitDate: [this.visitorService.setDate(), Validators.required],
       visitorType: null,
       visitors: this.createVisitorArray()
     });
+    this.visitorForm.removeControl
     this.getVisitorType();
   }
 
   createVisitorArray() {
-    // visitLocation: this.formBuilder.control("", [Validators.required]),
-    // visitorFromDate: [this.setDate(), Validators.required],
-    // visitorToDate: [this.setDate(), Validators.required],
-    // remarks: this.formBuilder.control("", Validators.maxLength(500))
     return this.formBuilder.array([this.createVisitor()]);
-    
-
   }
 
   createVisitor(): FormGroup {
