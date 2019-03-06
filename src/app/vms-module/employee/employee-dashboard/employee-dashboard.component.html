@@ -6,15 +6,15 @@
         <div class="sub-menu-parent">
           <button class="button" (click)="buttonClick()" [class.clicked]="showDropdown" type="button">Submit Request<span class="glyphicon glyphicon-share"></span></button>
           <ul class="sub-menu" *ngIf="showDropdown">
-            <a [routerLink]="['../create/family']"><li>Family</li></a>
-            <a [routerLink]="['../create/interviewee']"><li>Interviewee</li></a>
-            <a [routerLink]="['../create/vendor']"><li>Vendor</li></a>
-            <a [routerLink]="['../create/client']"><li>Client</li></a>
-            <a [routerLink]="['../create/vip']"><li>VIP</li></a>
-            <a [routerLink]="['../create/new-joinee']"><li>New Joinee</li></a>
-            <a [routerLink]="['../create/conf-attendee']"><li>Conference Attendee</li></a>
-            <a [routerLink]="['../create/guest']"><li>Guest</li></a>
-            <a [routerLink]="['../create/visitor']"><li>Visitor</li></a>
+            <a [routerLink]="['../family']"><li>Family</li></a>
+            <a [routerLink]="['../interviewee']"><li>Interviewee</li></a>
+            <a [routerLink]="['../vendor']"><li>Vendor</li></a>
+            <a [routerLink]="['../client']"><li>Client</li></a>
+            <a [routerLink]="['../vip']"><li>VIP</li></a>
+            <a [routerLink]="['../new-joinee']"><li>New Joinee</li></a>
+            <a [routerLink]="['../conf-attendee']"><li>Conference Attendee</li></a>
+            <a [routerLink]="['../guest']"><li>Guest</li></a>
+            <a [routerLink]="['../visitor']"><li>Visitor</li></a>
           </ul>
         </div>
       </td>

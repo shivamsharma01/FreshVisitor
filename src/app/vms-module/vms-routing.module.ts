@@ -6,7 +6,7 @@ import { VisitorTypeGuard } from "./employee/employee-dashboard/guard/visitor-ty
 
 import { EmployeeComponent } from "./employee/employee.component";
 import { EmployeeDashboardComponent } from "./employee/employee-dashboard/employee-dashboard.component";
-import { CreateRequestComponent } from "./employee/employee-dashboard/create-request/create-request.component";
+import { FamilyRequestComponent } from "./employee/employee-dashboard/family/family.component";
 import { ManageRequestComponent } from "./employee/employee-dashboard/manage-request/manage-request.component";
 
 const visitorRoutes: Routes = [
@@ -19,8 +19,8 @@ const visitorRoutes: Routes = [
         component: EmployeeDashboardComponent
       },
       {
-        path: "create/:type",
-        component: CreateRequestComponent,
+        path: "family",
+        component: FamilyRequestComponent,
         canActivate: [VisitorTypeGuard]
       },
       {
