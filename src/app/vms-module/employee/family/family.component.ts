@@ -15,6 +15,7 @@ export class FamilyRequestComponent implements OnInit {
   visitorForm: FormGroup;
   myDatePickerOptions: IMyOptions;
   maxLimit: number = 4;
+  url: string;
 
   constructor(
     private authService: AuthService,
@@ -60,7 +61,8 @@ export class FamilyRequestComponent implements OnInit {
         Validators.pattern(/^[A-Za-z0-9_.]{3,}@[A-Za-z]+(\.[a-z]{2,}){1,2}$/)
       ]),
       visitorUIdType: this.formBuilder.control(null, [Validators.required]),
-      visitorUId: this.formBuilder.control(null, [Validators.required])
+      visitorUId: this.formBuilder.control(null, [Validators.required]),
+      visitorPhoto: this.formBuilder.control(null)
     });
   }
 
@@ -77,11 +79,19 @@ export class FamilyRequestComponent implements OnInit {
   }
 
   submitForm() {
-    this.spinner.show();
-    setTimeout(() => {
-      this.spinner.hide();
-    }, 1000)
     this.visitorService.submitForm(this.visitorForm);
+  }
+
+  onSelectFile(event, index) {
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]); 
+      this.spinner.show();
+      reader.onload = (event) => {
+        (<FormArray>this.visitorForm.get('visitors')).at(index).get('visitorPhoto').setValue(event.target['result']);
+        this.spinner.hide();
+      }
+    }
   }
 
 }

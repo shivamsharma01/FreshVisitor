@@ -92,15 +92,18 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-6">
             <app-form-control [name]="'visitorEmailId'" [display]="'Visitor Email Id'" [control]="item.controls.visitorEmailId"></app-form-control>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-6">
             <app-form-control [name]="'visitorMobileNo'" [display]="'Visitor Mobile No'" [control]="item.controls.visitorMobileNo"></app-form-control>
         </div>
-        <div class="col-sm-4">
-          &nbsp;
-          </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 align-center">
+            <img [src]="item.controls.visitorPhoto.value" *ngIf="item.controls.visitorPhoto.value" height="200"> <br/>
+            <input type='file' (change)="onSelectFile($event, i)">
+        </div>
       </div>
       <div class="add-remove-container">
           <button class="button add-button" [disabled]="visitorForm.get('visitors').length === maxLimit" (click)="addItem()"><i class="fa fa-plus" aria-hidden="true"></i></button>
