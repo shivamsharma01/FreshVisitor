@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-sm-12">
         <label class="control-label col-sm-12" [for]="name">{{display}}</label>
-      <input type="text" class="form-control" [id]="name" [formControl]="control">
+      <input [class.error-form]="control.touched && control.invalid" type="text" class="form-control" [id]="name" [formControl]="control">
     </div>
     <div class="col-sm-12">
       <app-error-component [control]="control" [display]="display"></app-error-component>

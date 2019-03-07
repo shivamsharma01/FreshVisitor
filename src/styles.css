@@ -28,13 +28,13 @@
 }
 
 * {
-    margin: 0px; 
-    box-sizing: border-box;
+  margin: 0px; 
+  box-sizing: border-box;
 }
 
 body, html {
-    height: 100%;
-    font-family: Poppins-Regular, sans-serif;
+  height: 100%;
+  font-family: Poppins-Regular, sans-serif;
 }
 
 .form-control, .custom-select {
@@ -48,38 +48,38 @@ body, html {
 }
 
 a {
-    font-family: Poppins-Regular;
-    font-size: 14px;
-    line-height: 1.7;
-    color: #666666;
-    margin: 0px;
+  font-family: Poppins-Regular;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #666666;
+  margin: 0px;
 }
 
 a:focus {
-    outline: none !important;
+  outline: none !important;
 }
 
 a:hover {
-    text-decoration: none;
-    color: #57b846;
+  text-decoration: none;
+  color: #57b846;
 }
   
 h1,h2,h3,h4,h5,h6 {
-    margin: 0px;
+  margin: 0px;
 }
 
 p {
-    font-family: Poppins-Regular;
-    font-size: 14px;
-    line-height: 1.7;
-    color: #666666;
-    margin: 0px;
+  font-family: Poppins-Regular;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #666666;
+  margin: 0px;
 }
 
 
 input {
-    outline: none;
-    border: none;
+  outline: none;
+  border: none;
 }
   
 textarea {
@@ -100,17 +100,27 @@ textarea:focus, input:focus {
   height: 40px !important;
 }
 
-  input::-webkit-input-placeholder { color: rgba(255,255,255,0.8);}
-  input:-moz-placeholder { color: rgba(255,255,255,0.8);}
-  input::-moz-placeholder { color: rgba(255,255,255,0.8);}
-  input:-ms-input-placeholder { color: rgba(255,255,255,0.8);}
+input::-webkit-input-placeholder { color: rgba(255,255,255,0.8);}
+input:-moz-placeholder { color: rgba(255,255,255,0.8);}
+input::-moz-placeholder { color: rgba(255,255,255,0.8);}
+input:-ms-input-placeholder { color: rgba(255,255,255,0.8);}
   
-  textarea::-webkit-input-placeholder { color: rgba(255,255,255,0.8);}
-  textarea:-moz-placeholder { color: rgba(255,255,255,0.8);}
-  textarea::-moz-placeholder { color: rgba(255,255,255,0.8);}
-  textarea:-ms-input-placeholder { color: rgba(255,255,255,0.8);}
+button:hover {
+  cursor: pointer;
+}
 
-  
-  button:hover {
-      cursor: pointer;
-  }
+.error-form, .error-form .selectiongroup input  {
+  box-shadow: inset 20px 1px 1px rgba(255,0,0,0.5) !important;
+} 
+
+.date-form-error .selectiongroup input {
+  box-shadow: inset 20px 0px 1px rgba(255,0,0,0.5) !important;
+  height: 40px !important;
+  font-size: 14px !important;
+}
+
+input::placeholder {
+  font-family: Poppins-Regular, sans-serif;
+  color: black !important;
+  text-align: center;
+}

@@ -9,7 +9,8 @@
           <div class="row">
             <label class="control-label col-sm-12" [for]="visitLocation">Visit Location</label>
             <div class="col-sm-12">
-              <label class="custom-select" for="visitLocation">
+              <label [class.error-form]="visitorForm.get('visitLocation').touched && visitorForm.get('visitLocation').invalid" 
+                class="custom-select" for="visitLocation">
                 <select id="visitLocation" name="visitLocation" formControlName="visitLocation">
                   <option value="">Select an option</option>
                   <option>Bangalore</option>
@@ -42,7 +43,8 @@
         <div class="row">
           <label class="control-label col-sm-12" [for]="visitDate">Visit Date</label>
           <div class="col-sm-12">
-            <my-date-picker name="visitDate" [options]="myDatePickerOptions" [placeholder]="'placeholder'" formControlName="visitDate"></my-date-picker>
+            <my-date-picker [class.date-form-error]="visitorForm.get('visitDate').touched && visitorForm.get('visitDate').invalid" 
+            name="visitDate" [options]="myDatePickerOptions" [placeholder]="'placeholder'" formControlName="visitDate"></my-date-picker>
           </div>
           <div class="col-sm-12">
             <app-error-component [control]="visitorForm.controls.visitDate" [display]="'Visitor Entry Date'"></app-error-component>
@@ -67,7 +69,8 @@
                 <div class="row">
                   <label class="control-label col-sm-12" [for]="visitorUIdType">Visitor Unique Id Type</label>
                   <div class="col-sm-12">
-                    <label class="custom-select" for="visitorUIdType">
+                    <label  [class.error-form]="visitorForm.get('visitors').at(i).get('visitorUIdType').touched && visitorForm.get('visitors').at(i).get('visitorUIdType').invalid"
+                    class="custom-select" for="visitorUIdType">
                       <select id="visitorUIdType" name="visitorUIdType" formControlName="visitorUIdType">
                         <option value="">Select an option</option>
                         <option>Aadhar Card</option>

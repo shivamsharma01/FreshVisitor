@@ -32,8 +32,8 @@ export class FamilyRequestComponent implements OnInit {
     this.visitorForm = this.formBuilder.group({
       approverName: { value: this.authService.user.empName, disabled: true},
       approverEmployeeNo: this.authService.user.empNumber,
-      visitLocation: this.formBuilder.control("", [Validators.required]),
-      visitDate: [this.visitorService.setDate(), Validators.required],
+      visitLocation: this.formBuilder.control(null, [Validators.required]),
+      visitDate: this.formBuilder.control(null, [Validators.required]),
       visitorType: 'family',
       visitors: this.createVisitorArray()
     });
@@ -45,22 +45,22 @@ export class FamilyRequestComponent implements OnInit {
 
   createVisitor(): FormGroup {
     return this.formBuilder.group({
-      visitorName: this.formBuilder.control("", [
+      visitorName: this.formBuilder.control(null, [
         Validators.required,
         Validators.pattern(/^[A-Za-z][A-Za-z ]{1,}[A-Za-z]$/)
       ]),
-      visitorMobileNo: this.formBuilder.control("", [
+      visitorMobileNo: this.formBuilder.control(null, [
         Validators.minLength(10),
         Validators.maxLength(10),
         Validators.pattern(/\d{1,}/)
       ]),
-      visitorEmailId: this.formBuilder.control("", [
+      visitorEmailId: this.formBuilder.control(null, [
         Validators.required,
         Validators.email,
         Validators.pattern(/^[A-Za-z0-9_.]{3,}@[A-Za-z]+(\.[a-z]{2,}){1,2}$/)
       ]),
-      visitorUIdType: this.formBuilder.control("", [Validators.required]),
-      visitorUId: this.formBuilder.control("", [Validators.required])
+      visitorUIdType: this.formBuilder.control(null, [Validators.required]),
+      visitorUId: this.formBuilder.control(null, [Validators.required])
     });
   }
 
