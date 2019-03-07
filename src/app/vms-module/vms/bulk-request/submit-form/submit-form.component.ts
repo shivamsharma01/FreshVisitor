@@ -26,7 +26,7 @@ export class SubmitFormComponent implements OnInit {
         disabled: true
       },
       visitLocation: this.formBuilder.control("", [Validators.required]),
-      visitDate: this.formBuilder.control(null, [Validators.required]),
+      visitDate: this.formBuilder.control('', [Validators.required]),
       visitorType: this.formBuilder.control("", [Validators.required])
     });
     this.visitorForm.registerControl("visitors", this.createVisitorArray());
