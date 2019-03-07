@@ -3,11 +3,11 @@ import { User } from "src/app/model/user";
 import { AuthService } from "src/app/auth/auth.service";
 
 @Component({
-  selector: "app-employee-dashboard",
-  templateUrl: "./employee-dashboard.component.html",
-  styleUrls: ["./employee-dashboard.component.css"]
+  selector: "app-dashboard",
+  templateUrl: "./dashboard.component.html",
+  styleUrls: ["./dashboard.component.css"]
 })
-export class EmployeeDashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit {
   user: User; 
   showDropdown: boolean;
 
