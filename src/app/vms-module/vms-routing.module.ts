@@ -1,14 +1,13 @@
 import { NgModule } from "@angular/core";
 
 import { RouterModule, Routes } from "@angular/router";
-
-import { VisitorTypeGuard } from "./employee/employee-dashboard/guard/visitor-type.guard";
+import { VisitorTypeGuard } from "./guard/visitor-type.guard";
 
 import { EmployeeComponent } from "./employee/employee.component";
 import { EmployeeDashboardComponent } from "./employee/employee-dashboard/employee-dashboard.component";
-import { FamilyRequestComponent } from "./employee/employee-dashboard/family/family.component";
-import { ManageRequestComponent } from "./employee/employee-dashboard/manage-request/manage-request.component";
-import { IntervieweeRequestComponent } from "./employee/employee-dashboard/interviewee/interviewee.component";
+import { FamilyRequestComponent } from "./employee/family/family.component";
+import { ManageRequestComponent } from "./employee/manage-request/manage-request.component";
+import { IntervieweeRequestComponent } from "./employee/interviewee/interviewee.component";
 
 const visitorRoutes: Routes = [
   {

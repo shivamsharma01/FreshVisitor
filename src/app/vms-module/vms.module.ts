@@ -9,11 +9,11 @@ import { VMSRoutingModule } from './vms-routing.module';
 
 import { EmployeeComponent } from './employee/employee.component';
 import { EmployeeDashboardComponent } from './employee/employee-dashboard/employee-dashboard.component';
-import { ManageRequestComponent } from './employee/employee-dashboard/manage-request/manage-request.component';
-import { FormControlComponent } from './employee/employee-dashboard/form-control/form-control.component';
-import { ErrorComponentComponent } from './employee/employee-dashboard/error-component/error-component.component';
-import { FamilyRequestComponent } from './employee/employee-dashboard/family/family.component';
-import { IntervieweeRequestComponent } from './employee/employee-dashboard/interviewee/interviewee.component';
+import { ManageRequestComponent } from './employee/manage-request/manage-request.component';
+import { FormControlComponent } from './employee/common/form-control/form-control.component';
+import { ErrorComponentComponent } from './employee/common/error-component/error-component.component';
+import { FamilyRequestComponent } from './employee/family/family.component';
+import { IntervieweeRequestComponent } from './employee/interviewee/interviewee.component';
 
 @NgModule({
   imports: [

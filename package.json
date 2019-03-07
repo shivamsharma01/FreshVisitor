@@ -27,6 +27,7 @@
     "mydatepicker": "^2.6.6",
     "ngx-spinner": "^7.0.0",
     "rxjs": "~6.2.0",
+    "xlsx": "^0.14.1",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {

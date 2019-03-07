@@ -3,15 +3,10 @@ import { RouterModule, Routes } from "@angular/router";
 
 import { AuthGuard } from "./auth/auth.guard";
 
-import { HomepageComponent } from "./homepage/homepage.component";
 import { LoginComponent } from "./login/login.component";
 import { ErrorPageComponent } from "./error-page/error-page.component";
 
 const appRoutes: Routes = [
-  {
-    path: "home",
-    component: HomepageComponent
-  },
   {
     path: "login",
     component: LoginComponent
