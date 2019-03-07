@@ -33,6 +33,16 @@ button {
 }
 
 .header-left {
+    background-color: #485461;
+    color: black;
+    font-size: 24px;
+    font-family: Poppins-Bold, sans-serif;
+    color: rgba(255, 255, 255,1);
+    padding: 0px;
+    z-index: 1;
+}
+
+.header-middle {
     color: white;
     background-color: black;
 }
@@ -51,10 +61,17 @@ button {
 }
 
 @media (min-width: 766px) {
-    .header-right {
+    .header-left, .header-right {
         position: absolute;
-        right: 0;
-        bottom: 0;
         height: 100%;
+        bottom: 0;
+    }
+
+    .header-right {
+        right: 0;
+    }
+    
+    .header-left {
+        left: 0;
     }
 }

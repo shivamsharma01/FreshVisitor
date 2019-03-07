@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { AuthService } from "./auth/auth.service";
+import { Location } from "@angular/common";
 import { Router } from "@angular/router";
+import { AuthService } from "./auth/auth.service";
 
 @Component({
   selector: "app-root",
@@ -10,13 +11,21 @@ import { Router } from "@angular/router";
 export class AppComponent implements OnInit {
   title = "Visitor Management System";
 
-  constructor(public authService: AuthService, private router: Router) {}
+  constructor(
+    private location: Location,
+    private router: Router,
+    public authService: AuthService
+  ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   toggle() {
     this.authService.logout();
-    this.router.navigate(['login']);
+    this.router.navigate(["login"]);
   }
+
+  back() {
+    this.location.back();
+  }
+
 }
