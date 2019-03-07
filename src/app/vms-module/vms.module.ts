@@ -14,6 +14,7 @@ import { FormControlComponent } from './vms/common/form-control/form-control.com
 import { ErrorComponentComponent } from './vms/common/error-component/error-component.component';
 import { FamilyRequestComponent } from './vms/family/family.component';
 import { IntervieweeRequestComponent } from './vms/interviewee/interviewee.component';
+import { BulkRequestComponent } from './vms/bulk-request/bulk-request.component';
 
 @NgModule({
   imports: [
@@ -31,7 +32,8 @@ import { IntervieweeRequestComponent } from './vms/interviewee/interviewee.compo
     FormControlComponent,
     ErrorComponentComponent,
     FamilyRequestComponent,
-    IntervieweeRequestComponent
+    IntervieweeRequestComponent,
+    BulkRequestComponent
   ],
   providers: [],
 })

@@ -8,10 +8,11 @@ import { DashboardComponent } from "./vms/dashboard/dashboard.component";
 import { FamilyRequestComponent } from "./vms/family/family.component";
 import { ManageRequestComponent } from "./vms/manage-request/manage-request.component";
 import { IntervieweeRequestComponent } from "./vms/interviewee/interviewee.component";
+import { BulkRequestComponent } from "./vms/bulk-request/bulk-request.component";
 
 const visitorRoutes: Routes = [
   {
-    path: "employee",
+    path: "",
     component: VMSComponent,
     children: [
       {
@@ -27,6 +28,10 @@ const visitorRoutes: Routes = [
         path: "interviewee",
         component: IntervieweeRequestComponent,
         canActivate: [VisitorTypeGuard]
+      },
+      {
+        path: "bulk-request",
+        component: BulkRequestComponent
       },
       {
         path: "manage",

@@ -33,7 +33,7 @@ export class FamilyRequestComponent implements OnInit {
     this.visitorForm = this.formBuilder.group({
       approverName: { value: this.authService.user.empName, disabled: true},
       approverEmployeeNo: this.authService.user.empNumber,
-      visitLocation: this.formBuilder.control(null, [Validators.required]),
+      visitLocation: this.formBuilder.control('', [Validators.required]),
       visitDate: this.formBuilder.control(null, [Validators.required]),
       visitorType: 'family',
       visitors: this.createVisitorArray()
@@ -60,7 +60,7 @@ export class FamilyRequestComponent implements OnInit {
         Validators.email,
         Validators.pattern(/^[A-Za-z0-9_.]{3,}@[A-Za-z]+(\.[a-z]{2,}){1,2}$/)
       ]),
-      visitorUIdType: this.formBuilder.control(null, [Validators.required]),
+      visitorUIdType: this.formBuilder.control('', [Validators.required]),
       visitorUId: this.formBuilder.control(null, [Validators.required]),
       visitorPhoto: this.formBuilder.control(null)
     });

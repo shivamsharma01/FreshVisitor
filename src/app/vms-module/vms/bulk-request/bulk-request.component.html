@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="well well-lg">
+        <h2><em>Create Bulk Request</em></h2>
+      </div>
+    </div>
+  </div>
+  <div class="jumbotron alert alert-warning">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="col-sm-8">
+          <strong>Note!</strong> The Excel Sheet Should Contain the following
+          headers (Case Sensitive in Order)
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 alert alert-warning row">
+        <div class="col-sm-2">
+          <h3>SNO</h3>
+        </div>
+        <div class="col-sm-2">
+          <h3>SNO</h3>
+        </div>
+        <div class="col-sm-2">
+          <h3>EMAIL</h3>
+        </div>
+        <div class="col-sm-2">
+          <h3>MOBILE</h3>
+        </div>
+        <div class="col-sm-2">
+          <h3>UNIQUE_TYPE</h3>
+        </div>
+        <div class="col-sm-2">
+          <h3>UNIQUE_ID</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <input type="file" (change)="onFileChange($event)" multiple="false" />
+    <table class="sjs-table">
+      <tr *ngFor="let row of data">
+        <td *ngFor="let val of row">
+          {{ val }}
+        </td>
+      </tr>
+    </table>
+    <button (click)="export()">Export!</button>
+  </div>
+</div>

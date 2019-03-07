@@ -100,7 +100,8 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-12 align-center">
+        <div class="col-sm-4">
+          <p *ngIf="!item.controls.visitorPhoto.value">Upload Visitor Photo</p>
             <img [src]="item.controls.visitorPhoto.value" *ngIf="item.controls.visitorPhoto.value" height="200"> <br/>
             <input type='file' (change)="onSelectFile($event, i)">
         </div>

@@ -59,7 +59,6 @@ button {
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   border-radius: 8px;
-  font-size: 24px;
   color: #fff;
   padding: 20px 30px;
   background-color: #4285f4;
@@ -147,8 +146,17 @@ form .row {
 
 .visitor-unique {
   border: 1px solid black;
+  border-radius: 5px;
 }
 
 form > div.header-common, form > div div.visitor-form {
   box-shadow: 5px 4px 10px grey, 0 0 10px black
+}
+
+.visitor-form, div.header-common {
+  background-color: yellowgreen;
+}
+
+.custom-select {
+  background-color: white;
 }
