@@ -20,6 +20,7 @@
     font-size: 39px;
     text-align: center;
     text-transform: uppercase;
+    position: relative;
 }
 
 button {
@@ -39,7 +40,21 @@ button {
 .header-right {
     background-color: #485461;
     color: black;
+    font-size: 24px;
     font-family: Poppins-Bold, sans-serif;
     color: rgba(255, 255, 255,1);
     padding: 0px;
+}
+
+button {
+    vertical-align: -webkit-baseline-middle;
+}
+
+@media (min-width: 766px) {
+    .header-right {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+    }
 }

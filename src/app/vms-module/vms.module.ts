@@ -7,6 +7,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { VMSRoutingModule } from './vms-routing.module';
 
+import { HighlightDirective } from './highlight.directive';
 import { EmployeeComponent } from './employee/employee.component';
 import { EmployeeDashboardComponent } from './employee/employee-dashboard/employee-dashboard.component';
 import { ManageRequestComponent } from './employee/employee-dashboard/manage-request/manage-request.component';
@@ -25,6 +26,7 @@ import { IntervieweeRequestComponent } from './employee/employee-dashboard/inter
     VMSRoutingModule
   ],
   declarations: [
+    HighlightDirective,
     EmployeeComponent,
     EmployeeDashboardComponent,
     ManageRequestComponent,
