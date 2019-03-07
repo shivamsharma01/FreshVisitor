@@ -6,3 +6,7 @@
     text-transform: uppercase;
     text-decoration: underline;
 }
+
+.alert-success {
+    margin: 5px;
+}
