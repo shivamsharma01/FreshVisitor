@@ -1,18 +1,23 @@
 import { Component, OnInit } from "@angular/core";
-import { TemplateService } from "./template.service";
 import { saveAs as importedSaveAs } from "file-saver";
 import * as XLSX from "xlsx";
+import { TemplateService } from "./template.service";
+import { VisitorData } from "src/app/model/visitor-form";
 
 @Component({
   selector: "app-bulk-request",
   templateUrl: "./bulk-request.component.html",
-  styleUrls: ["./bulk-request.component.css"]
+  styleUrls: ["./bulk-request.component.css"],
+  providers: [TemplateService]
 })
 export class BulkRequestComponent implements OnInit {
   errorMsg: string;
+  uploadData: VisitorData[];
+
   constructor(private templateService: TemplateService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   getFile() {
     this.templateService.getFile().subscribe(data => {
@@ -41,8 +46,8 @@ export class BulkRequestComponent implements OnInit {
 		reader.onload = (e: any) => {
 			const wb: XLSX.WorkBook = XLSX.read(e.target.result, {type: 'binary'});
 			const ws: XLSX.WorkSheet = wb.Sheets[wb.SheetNames[0]];
-      let dataAsObject = <VisitorData[]>(XLSX.utils.sheet_to_json(ws, {header: 0}));
-      console.log(dataAsObject);
+      this.uploadData = <VisitorData[]>(XLSX.utils.sheet_to_json(ws, {header: 0}));
+      console.log(this.uploadData);
 		};
 		reader.readAsBinaryString(target.files[0]);
   }
@@ -50,15 +55,5 @@ export class BulkRequestComponent implements OnInit {
   clearErrorMsg() {
     this.errorMsg = null;
   }
-}
 
-class VisitorData {
-  constructor(
-    public SNO: number,
-    public NAME: string,
-    public Email: string,
-    public MOBILE: string,
-    public UNIQUE_TYPE: string,
-    public UNIQUE_ID: string
-  ) {}
 }

@@ -1,3 +1,27 @@
-<p>
-  submit-form works!
-</p>
+<div class="container">
+    <div class="well well-lg">
+      <h2><em>Bulk Form Data</em></h2>
+    </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>SNO</th>
+        <th>NAME</th>
+        <th>EMAIL</th>
+        <th>MOBILE</th>
+        <th>UNIQUE_TYPE</th>
+        <th>UNIQUE_ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="success" *ngFor="let obj of data">
+        <td>{{obj.SNO}}</td>
+        <td>{{obj.NAME}}</td>
+        <td>{{obj.EMAIL}}</td>
+        <td>{{obj.MOBILE}}</td>
+        <td>{{obj.UNIQUE_TYPE}}</td>
+        <td>{{obj.UNIQUE_ID}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

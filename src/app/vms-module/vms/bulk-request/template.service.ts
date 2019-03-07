@@ -9,8 +9,8 @@ import { RequestOptions, ResponseContentType } from "@angular/http";
   providedIn: "root"
 })
 export class TemplateService {
-  private xlsxUrl: string = 'assets/template/template.xlsx';
-
+  private xlsxUrl: string = "assets/template/template.xlsx";
+  
   constructor(private http: HttpClient) {}
 
   getFile(): Observable<ArrayBuffer> {
@@ -24,6 +24,7 @@ export class TemplateService {
       .get(this.xlsxUrl, {
         responseType: "blob"
       })
-      .pipe(map((res:any) => res));
+      .pipe(map((res: any) => res));
   }
+
 }

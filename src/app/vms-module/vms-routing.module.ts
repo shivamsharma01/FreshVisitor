@@ -9,6 +9,7 @@ import { FamilyRequestComponent } from "./vms/family/family.component";
 import { ManageRequestComponent } from "./vms/manage-request/manage-request.component";
 import { IntervieweeRequestComponent } from "./vms/interviewee/interviewee.component";
 import { BulkRequestComponent } from "./vms/bulk-request/bulk-request.component";
+import { SubmitFormComponent } from "./vms/bulk-request/submit-form/submit-form.component";
 
 const visitorRoutes: Routes = [
   {
