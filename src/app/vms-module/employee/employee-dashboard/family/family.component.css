@@ -16,7 +16,7 @@
   background: #eee;
   padding: 20px;
   border-radius: 10px;
-  margin-bottom: 20px;
+  margin: 20px 0px;
 }
 
 .custom-select {
@@ -144,4 +144,12 @@ div.header-common {
 form .row {
   border-radius: 10px;
   margin: 0px;
+}
+
+.visitor-unique {
+  border: 1px solid black;
+}
+
+form > div.header-common, form > div div.visitor-form {
+  box-shadow: 5px 4px 10px grey, 0 0 10px black
 }

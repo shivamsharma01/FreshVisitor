@@ -30,7 +30,7 @@ export class FamilyRequestComponent implements OnInit {
 
   createForm() {
     this.visitorForm = this.formBuilder.group({
-      approverName: this.authService.user.empName,
+      approverName: { value: this.authService.user.empName, disabled: true},
       approverEmployeeNo: this.authService.user.empNumber,
       visitLocation: this.formBuilder.control("", [Validators.required]),
       visitDate: [this.visitorService.setDate(), Validators.required],
@@ -50,7 +50,6 @@ export class FamilyRequestComponent implements OnInit {
         Validators.pattern(/^[A-Za-z][A-Za-z ]{1,}[A-Za-z]$/)
       ]),
       visitorMobileNo: this.formBuilder.control("", [
-        Validators.required,
         Validators.minLength(10),
         Validators.maxLength(10),
         Validators.pattern(/\d{1,}/)

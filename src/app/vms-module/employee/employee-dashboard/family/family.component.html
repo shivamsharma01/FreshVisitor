@@ -50,6 +50,9 @@
         </div>
       </div>
     </div>
+    <div class="col-sm-4">
+      <app-form-control [name]="'approverName'" [display]="'Requester'" [control]="visitorForm.controls.approverName"></app-form-control>
+    </div>
   </div>
   <div formArrayName="visitors" *ngFor="let item of visitorForm.controls.visitors.controls; let i = index;">
     <div class="visitor-form animated slideInRight delay-2s" [formGroupName]="i">
@@ -57,36 +60,40 @@
         <div class="col-sm-4">
           <app-form-control [name]="'visitorName'" [display]="'Visitor Name'" [control]="item.controls.visitorName"></app-form-control>
         </div>
-        <div class="col-sm-4">
-            <app-form-control [name]="'visitorMobileNo'" [display]="'Visitor Mobile No'" [control]="item.controls.visitorMobileNo"></app-form-control>
-        </div>
-        <div class="col-sm-4">
-            <app-form-control [name]="'visitorEmailId'" [display]="'Visitor Email Id'" [control]="item.controls.visitorEmailId"></app-form-control>
+        <div class="col-sm-8 visitor-unique">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <div class="row">
+                  <label class="control-label col-sm-12" [for]="visitorUIdType">Visitor Unique Id Type</label>
+                  <div class="col-sm-12">
+                    <label class="custom-select" for="visitorUIdType">
+                      <select id="visitorUIdType" name="visitorUIdType" formControlName="visitorUIdType">
+                        <option value="">Select an option</option>
+                        <option>Aadhar Card</option>
+                        <option>PAN Card</option>
+                        <option>Passport Number</option>
+                      </select>
+                    </label>
+                  </div>
+                  <div class="col-sm-12">
+                    <app-error-component [control]="item.controls.visitorUIdType" [display]="'Visitor Unique Id Type'"></app-error-component>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <app-form-control [name]="'visitorUId'" [display]="'Visitor Unique Id'" [control]="item.controls.visitorUId"></app-form-control>
+            </div>
+          </div>
         </div>
       </div>
       <div class="row">
         <div class="col-sm-4">
-          <div class="form-group">
-            <div class="row">
-              <label class="control-label col-sm-12" [for]="visitorUIdType">Visitor Unique Id Type</label>
-              <div class="col-sm-12">
-                <label class="custom-select" for="visitorUIdType">
-                  <select id="visitorUIdType" name="visitorUIdType" formControlName="visitorUIdType">
-                    <option value="">Select an option</option>
-                    <option>Aadhar Card</option>
-                    <option>PAN Card</option>
-                    <option>Passport Number</option>
-                  </select>
-                </label>
-              </div>
-              <div class="col-sm-12">
-                <app-error-component [control]="item.controls.visitorUIdType" [display]="'Visitor Unique Id Type'"></app-error-component>
-              </div>
-            </div>
-          </div>
+            <app-form-control [name]="'visitorEmailId'" [display]="'Visitor Email Id'" [control]="item.controls.visitorEmailId"></app-form-control>
         </div>
         <div class="col-sm-4">
-          <app-form-control [name]="'visitorUId'" [display]="'Visitor Unique Id'" [control]="item.controls.visitorUId"></app-form-control>
+            <app-form-control [name]="'visitorMobileNo'" [display]="'Visitor Mobile No'" [control]="item.controls.visitorMobileNo"></app-form-control>
         </div>
         <div class="col-sm-4">
           &nbsp;
