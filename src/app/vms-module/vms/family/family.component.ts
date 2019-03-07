@@ -15,7 +15,6 @@ export class FamilyRequestComponent implements OnInit {
   visitorForm: FormGroup;
   myDatePickerOptions: IMyOptions;
   maxLimit: number = 4;
-  url: string;
 
   constructor(
     private authService: AuthService,

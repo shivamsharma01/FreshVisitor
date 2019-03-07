@@ -15,6 +15,7 @@ import { ErrorComponentComponent } from './vms/common/error-component/error-comp
 import { FamilyRequestComponent } from './vms/family/family.component';
 import { IntervieweeRequestComponent } from './vms/interviewee/interviewee.component';
 import { BulkRequestComponent } from './vms/bulk-request/bulk-request.component';
+import { SubmitFormComponent } from './vms/bulk-request/submit-form/submit-form.component';
 
 @NgModule({
   imports: [
@@ -33,7 +34,8 @@ import { BulkRequestComponent } from './vms/bulk-request/bulk-request.component'
     ErrorComponentComponent,
     FamilyRequestComponent,
     IntervieweeRequestComponent,
-    BulkRequestComponent
+    BulkRequestComponent,
+    SubmitFormComponent
   ],
   providers: [],
 })
