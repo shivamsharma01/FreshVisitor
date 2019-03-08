@@ -12,7 +12,7 @@ import { DashboardComponent } from './vms/dashboard/dashboard.component';
 import { ManageRequestComponent } from './vms/manage-request/manage-request.component';
 import { FormControlComponent } from './vms/common/form-control/form-control.component';
 import { ErrorComponentComponent } from './vms/common/error-component/error-component.component';
-import { FamilyRequestComponent } from './vms/family/family.component';
+import { IndividualRequestComponent } from './vms/individual-request/individual-request.component';
 import { BulkRequestComponent } from './vms/bulk-request/bulk-request.component';
 import { SubmitFormComponent } from './vms/bulk-request/submit-form/submit-form.component';
 
@@ -31,7 +31,7 @@ import { SubmitFormComponent } from './vms/bulk-request/submit-form/submit-form.
     ManageRequestComponent,
     FormControlComponent,
     ErrorComponentComponent,
-    FamilyRequestComponent,
+    IndividualRequestComponent,
     BulkRequestComponent,
     SubmitFormComponent
   ],

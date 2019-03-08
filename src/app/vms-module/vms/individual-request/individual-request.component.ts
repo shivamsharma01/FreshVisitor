@@ -6,11 +6,11 @@ import { VisitorService } from "src/app/vms-module/service/visitor.service";
 import { IMyOptions } from "mydatepicker";
 
 @Component({
-  selector: "app-family",
-  templateUrl: "./family.component.html",
-  styleUrls: ["./family.component.css"]
+  selector: "app-individual-request",
+  templateUrl: "./individual-request.component.html",
+  styleUrls: ["./individual-request.component.css"]
 })
-export class FamilyRequestComponent implements OnInit {
+export class IndividualRequestComponent implements OnInit {
   visitorType: string;
   visitorForm: FormGroup;
   myDatePickerOptions: IMyOptions;
