@@ -4,6 +4,12 @@
 
 <form class="jumbotron create-request form-horizontal" [formGroup]="visitorForm">
   <div class="row header-common">
+    <div class="row">
+      <div class="col-sm-6 text-left">
+        <h3 class="visitor-type-container">Create Request for <p class="visitor-type">
+          <strong>{{ visitorForm?.get('visitorType').value}}</strong></p></h3>
+      </div>
+    </div>
       <div class="col-sm-4">
         <div class="form-group">
           <div class="row">

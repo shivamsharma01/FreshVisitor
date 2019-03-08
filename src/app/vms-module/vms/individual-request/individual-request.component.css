@@ -160,3 +160,12 @@ form > div.header-common, form > div div.visitor-form {
 .custom-select {
   background-color: white;
 }
+
+.visitor-type-container {
+
+}
+
+.visitor-type {
+  display: inline;
+  font-size: 24px;
+}

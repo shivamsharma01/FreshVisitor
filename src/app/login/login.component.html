@@ -1,5 +1,17 @@
-<div class="container">    
-    <h2>LOGIN</h2>
-    <p>Current Status: {{message}}</p>
-    <button (click)="login(1111)"  *ngIf="!authService.isLoggedIn">Login - Employee</button>
+<ngx-spinner bdOpacity=0.9 bdColor="#333" size="large" color="#fff" type="ball-atom" fullScreen="false">
+    <p style="color: white"> Loading. Please Wait...</p>
+</ngx-spinner>
+<div class="jumbotron login-form">
+    <form class="form-group" [formGroup]="formGroup">
+        <label for="uname"><b>Username</b></label>
+        <input type="text" formControlName="username" placeholder="Enter Username" name="uname" required>
+
+        <label for="psw"><b>Password</b></label>
+        <input type="password" formControlName="password" placeholder="Enter Password" name="psw" required>
+
+        <button type="submit" (click)="login()">Login</button>
+    </form>
+    <div class="alert alert-danger" *ngIf="loginMessage">
+        <p>{{loginMessage}}</p>
+    </div>
 </div>

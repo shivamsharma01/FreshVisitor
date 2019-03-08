@@ -6,7 +6,7 @@
         <div class="sub-menu-parent">
           <button class="button" (click)="buttonClick()" [class.clicked]="showDropdown" type="button">Submit Request<span class="glyphicon glyphicon-share"></span></button>
           <ul class="sub-menu" *ngIf="showDropdown">
-            <a [routerLink]="['../individual-request']"><li>Family</li></a>
+            <a [routerLink]="['../individual-request/family']"><li>Family</li></a>
             <a [routerLink]="['../interviewee']"><li>Interviewee</li></a>
             <a [routerLink]="['../vendor']"><li>Vendor</li></a>
             <a [routerLink]="['../client']"><li>Client</li></a>

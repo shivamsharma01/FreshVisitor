@@ -4,6 +4,9 @@ import { NgxSpinnerService } from "ngx-spinner";
 import { AuthService } from "src/app/auth/auth.service";
 import { VisitorService } from "src/app/vms-module/service/visitor.service";
 import { IMyOptions } from "mydatepicker";
+import { ActivatedRoute } from "@angular/router";
+import { Observable } from "rxjs";
+import { map } from "rxjs/operators";
 
 @Component({
   selector: "app-individual-request",
@@ -19,6 +22,7 @@ export class IndividualRequestComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private formBuilder: FormBuilder,
+    private activatedRoute: ActivatedRoute,
     private spinner: NgxSpinnerService,
     private visitorService: VisitorService
   ) {}
@@ -34,13 +38,18 @@ export class IndividualRequestComponent implements OnInit {
       approverEmployeeNo: this.authService.user.empNumber,
       visitLocation: this.formBuilder.control('', [Validators.required]),
       visitDate: this.formBuilder.control(null, [Validators.required]),
-      visitorType: 'family',
+      visitorType: this.formBuilder.control(''),
       visitors: this.createVisitorArray()
     });
+    this.getVisitorType();
   }
 
   createVisitorArray() {
     return this.formBuilder.array([this.createVisitor()]);
+  }
+
+  getVisitorType() {
+    this.activatedRoute.params.pipe(map(p => p['visitor-type'])).subscribe(visitorType => this.visitorForm.get('visitorType').setValue(visitorType));
   }
 
   createVisitor(): FormGroup {

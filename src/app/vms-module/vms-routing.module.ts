@@ -20,7 +20,7 @@ const visitorRoutes: Routes = [
         component: DashboardComponent
       },
       {
-        path: "individual-request",
+        path: "individual-request/:visitor-type",
         component: IndividualRequestComponent,
         canActivate: [VisitorTypeGuard]
       },

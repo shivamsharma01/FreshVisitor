@@ -1,10 +1,12 @@
 import { Injectable } from "@angular/core";
 
-import { Observable, of, Subject, BehaviorSubject } from "rxjs";
-import { delay, map } from "rxjs/operators";
+import { Observable, Subject, BehaviorSubject } from "rxjs";
+import { map } from "rxjs/operators";
 import { ROLE } from "./roles";
 import { User } from "../model/user";
 import { users } from "../model/users";
+import { LoginClass } from "../model/login";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({
   providedIn: "root"
@@ -15,29 +17,12 @@ export class AuthService {
   user: User;
   redirectUrl: string;
 
-  login(empNumber: number): Observable<string> {
-    return of(this.mockBackend(empNumber)).pipe(
-      // delay(1000),
-      map(val => {
-        if (!!val) {
-          this.user.isAuthenticated = true;
-          return this.getRoute(ROLE.Employee);
-        }
-      })
-    );
+  constructor(private http: HttpClient) {
   }
 
-  mockBackend(empNumber: number): boolean {
-    this.user = users.find(user => user.empNumber === empNumber);
-    return this.isLoggedIn = !!this.user;
-  }
 
-  getRoute(type) {
-    if (type === ROLE.Employee) {
-      return "vms/employee/dashboard";
-    } else {
-      return "error";
-    }
+  login(loginForm: LoginClass) {
+    return this.http.post('',loginForm)
   }
 
   logout(): void {
