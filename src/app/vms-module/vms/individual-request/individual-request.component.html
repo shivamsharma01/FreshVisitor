@@ -47,7 +47,7 @@
     <div class="col-sm-4">
       <div class="form-group">
         <div class="row">
-          <label class="control-label col-sm-12" [for]="visitDate">Visit Date</label>
+          <label class="control-label col-sm-12" [for]="'visitDate'">Visit Date</label>
           <div class="col-sm-12">
             <my-date-picker [class.date-form-error]="visitorForm.get('visitDate').touched && visitorForm.get('visitDate').invalid" 
             name="visitDate" [options]="myDatePickerOptions" [placeholder]="'placeholder'" formControlName="visitDate"></my-date-picker>
@@ -62,7 +62,7 @@
       <app-form-control [name]="'approverName'" [display]="'Requester'" [control]="visitorForm.controls.approverName"></app-form-control>
     </div>
   </div>
-  <div formArrayName="visitors" *ngFor="let item of visitorForm.controls.visitors.controls; let i = index;">
+  <div formArrayName="visitors" *ngFor="let item of visitorForm.get('visitors')?.controls; let i = index;">
     <div class="visitor-form animated slideInRight delay-2s" [formGroupName]="i">
       <div class="row">
         <div class="col-sm-4">
