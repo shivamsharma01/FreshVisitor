@@ -1,12 +1,14 @@
 export class VisitorData {
-    constructor(
-      public SNO: number,
-      public NAME: string,
-      public EMAIL: string,
-      public MOBILE: string,
-      public UNIQUE_TYPE: string,
-      public UNIQUE_ID: string,
-      public VISITOR_TYPE: string
-    ) {}
-  }
-  
+  SNO: number;
+  NAME: string;
+  EMAIL: string;
+  MOBILE: string;
+  UNIQUE_TYPE: string;
+  UNIQUE_ID: string;
+  VISITOR_TYPE: string;
+  VISIT_LOCATION: string;
+  DATE_IN: string;
+  TIME_IN: string;
+  DATE_OUT: string;
+  TIME_OUT: string;
+}
