@@ -5,7 +5,6 @@ import { AuthService } from "src/app/auth/auth.service";
 import { VisitorService } from "src/app/vms-module/service/visitor.service";
 import { IMyOptions } from "mydatepicker";
 import { ActivatedRoute } from "@angular/router";
-import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 
 @Component({
@@ -28,14 +27,15 @@ export class IndividualRequestComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    console.log(this.authService.user);
     this.myDatePickerOptions = this.visitorService.configureDatePicker();
     this.createForm();
   }
 
   createForm() {
     this.visitorForm = this.formBuilder.group({
-      approverName: { value: this.authService.user.empName, disabled: true},
-      approverEmployeeNo: this.authService.user.empNumber,
+      approverName: { value: this.authService.user.Name, disabled: true},
+      approverEmployeeNo: this.authService.user.EmployeeId,
       visitLocation: this.formBuilder.control('', [Validators.required]),
       visitDate: this.formBuilder.control(null, [Validators.required]),
       visitorType: this.formBuilder.control(''),

@@ -20,9 +20,9 @@ export class SubmitFormComponent implements OnInit {
 
   ngOnInit() {
     this.visitorForm = this.formBuilder.group({
-      approverName: { value: this.authService.user.empName, disabled: true },
+      approverName: { value: this.authService.user.Name, disabled: true },
       approverEmployeeNo: {
-        value: this.authService.user.empNumber,
+        value: this.authService.user.EmployeeId,
         disabled: true
       },
       visitLocation: this.formBuilder.control("", [Validators.required]),
@@ -46,7 +46,7 @@ export class SubmitFormComponent implements OnInit {
             Validators.maxLength(10),
             Validators.pattern(/\d{1,}/)
           ]),
-          visitorEmailId: this.formBuilder.control(visitor.Email, [
+          visitorEmailId: this.formBuilder.control(visitor.EMAIL, [
             Validators.required,
             Validators.email,
             Validators.pattern(

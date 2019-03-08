@@ -1,31 +1,36 @@
 <div class="container-fluid">
-  <h2 class="animated slideInDown delay-2">Welcome {{ user?.empName }}</h2>
+  <h2 class="animated slideInDown delay-2">Welcome {{ user?.Name }}</h2>
   <table class="buttons">
     <tr>
       <td>
-        <div class="sub-menu-parent">
-          <button class="button" (click)="buttonClick()" [class.clicked]="showDropdown" type="button">Submit Request<span class="glyphicon glyphicon-share"></span></button>
-          <ul class="sub-menu" *ngIf="showDropdown">
-            <a [routerLink]="['../individual-request/family']"><li>Family</li></a>
-            <a [routerLink]="['../interviewee']"><li>Interviewee</li></a>
-            <a [routerLink]="['../vendor']"><li>Vendor</li></a>
-            <a [routerLink]="['../client']"><li>Client</li></a>
-            <a [routerLink]="['../vip']"><li>VIP</li></a>
-            <a [routerLink]="['../new-joinee']"><li>New Joinee</li></a>
-            <a [routerLink]="['../conf-attendee']"><li>Conference Attendee</li></a>
-            <a [routerLink]="['../guest']"><li>Guest</li></a>
-            <a [routerLink]="['../visitor']"><li>Visitor</li></a>
-          </ul>
-        </div>
-      </td>
-      <td>
-        <a [routerLink]="['../bulk-request']">
-        <button class="button" type="button">Create Bulk Request<span class="glyphicon glyphicon-tasks"></span></button>
-        </a>
+          <div class="sub-menu-parent" *ngIf="user?.JobLevel === 'Employee'">
+            <a [routerLink]="['../individual-request/family']">
+              <button class="button" (click)="buttonClick()" [class.clicked]="showDropdown" type="button">Submit Request<span class="glyphicon glyphicon-share"></span></button>
+            </a>
+          </div>
+          <div class="sub-menu-parent" *ngIf="user?.JobLevel === 'Admin'" >
+            <button class="button" (click)="buttonClick()" [class.clicked]="showDropdown" type="button">Submit Request<span class="glyphicon glyphicon-share"></span></button>
+            <ul class="sub-menu" *ngIf="showDropdown">
+              <a [routerLink]="['../individual-request/family']"><li>Family</li></a>
+              <a [routerLink]="['../individual-request/interviewee']"><li>Interviewee</li></a>
+              <a [routerLink]="['../individual-request/vendor']"><li>Vendor</li></a>
+              <a [routerLink]="['../individual-request/client']"><li>Client</li></a>
+              <a [routerLink]="['../individual-request/vip']"><li>VIP</li></a>
+              <a [routerLink]="['../individual-request/new-joinee']"><li>New Joinee</li></a>
+              <a [routerLink]="['../individual-request/conf-attendee']"><li>Conference Attendee</li></a>
+              <a [routerLink]="['../individual-request/guest']"><li>Guest</li></a>
+              <a [routerLink]="['../individual-request/visitor']"><li>Visitor</li></a>
+            </ul>
+          </div>
       </td>
       <td>
         <a [routerLink]="['../manage']">
         <button class="button" type="button">Manage Requests<span class="glyphicon glyphicon-pencil"></span></button>
+        </a>
+      </td>
+      <td>
+        <a [routerLink]="['../bulk-request']" *ngIf="user.JobLevel === 'Admin'">
+        <button class="button" type="button">Create Bulk Request<span class="glyphicon glyphicon-tasks"></span></button>
         </a>
       </td>
     </tr>

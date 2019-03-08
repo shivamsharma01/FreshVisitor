@@ -12,7 +12,10 @@
         <div class="col-sm-8">
             <strong>Note! Follow the steps for bulk approval request</strong>
             <p>1. Download the template for bulk requests</p><button (click)="downloadFile()">download</button>
-            <p>2. Fill the sheet and upload. (all fields are mandatory, only 1 sheet)</p>
+            <p>
+              2. Fill the sheet and upload. (all fields are mandatory)<br>
+                 refer sheet 2 for supported <strong>'Visitor Types'</strong> & <strong>'Unique Id Types'</strong>
+            </p>
             <input type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" ID="fileSelect" runat="server" (change)="onFileChange($event)" multiple="false" />
         </div>
       </div>

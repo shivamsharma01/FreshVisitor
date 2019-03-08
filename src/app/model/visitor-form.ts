@@ -5,7 +5,8 @@ export class VisitorData {
       public EMAIL: string,
       public MOBILE: string,
       public UNIQUE_TYPE: string,
-      public UNIQUE_ID: string
+      public UNIQUE_ID: string,
+      public VISITOR_TYPE: string
     ) {}
   }
   

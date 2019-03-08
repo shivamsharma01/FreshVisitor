@@ -18,7 +18,7 @@ const appRoutes: Routes = [
   {
     path: "vms",
     loadChildren: "./vms-module/vms.module#VMSModule",
-  //  canLoad: [AuthGuard]
+    canLoad: [AuthGuard]
   },
   { path: "", redirectTo: "vms/dashboard", pathMatch: "full" },
   { path: "**", redirectTo: "error" }
@@ -28,4 +28,4 @@ const appRoutes: Routes = [
   imports: [RouterModule.forRoot(appRoutes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

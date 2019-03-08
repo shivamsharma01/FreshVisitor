@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AuthService } from '../auth/auth.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { AuthService } from '../auth/auth.service';
+import { User } from '../model/user';
 
 
 @Component({
@@ -33,27 +34,38 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    const user = new User();
+    user.Name = 'shivam';
+    user.EmployeeId = '1315';
+    user.JobLevel = 'Admin';
+    user.LoginStatus = 'Success';
+    this.authService.user = user;
+    this.authService.isLoggedIn = true;
     this.router.navigate(['vms/dashboard']);
-    console.log('login form');    
-    if (this.formGroup.invalid) {
-      console.log('login form invalid');
-      this.loginMessage = 'Please Enter Username and Password';
-      return;
-    } else {
-      console.log('login form submit');
-      this.spinner.show();
-      // this.authService.login(this.formGroup.value).subscribe(data => {
-      //   if (data) {
-      //     this.loginMessage = 'Success';
-      //     this.router.navigate(['vms/dashboard']);
-      //   }
-      // });
-      
-    }
-    console.log('login form after submit');
-    this.loginMessage = 'Login Failed. Please Try Again';
-    this.spinner.hide();
   }
+  
+  // login() {
+  //   this.router.navigate(['vms/dashboard']); 
+  //   if (this.formGroup.invalid) {
+  //     this.loginMessage = 'Please Enter Username and Password';
+  //     return;
+  //   } else {
+  //     this.spinner.show();
+  //     this.authService.login(this.formGroup.value).subscribe((data: User) => {
+  //       if (data.LoginStatus === 'Success') {
+  //         this.authService.isLoggedIn = true;
+  //         this.loginMessage = 'Success';
+  //         this.authService.user = data;
+  //         this.router.navigate(['vms/dashboard']);
+  //       } else {
+  //         this.authService.user = null;
+  //       }
+  //     });
+      
+  //   }
+  //   this.loginMessage = 'Login Failed. Please Try Again';
+  //   this.spinner.hide();
+  // }
 
   logout() {
     this.authService.logout();

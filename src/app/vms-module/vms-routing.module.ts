@@ -1,14 +1,14 @@
 import { NgModule } from "@angular/core";
 
 import { RouterModule, Routes } from "@angular/router";
-import { VisitorTypeGuard } from "./guard/visitor-type.guard";
+import { EmployeeGuard } from "./guard/employee.guard";
+import { AdminGuard } from "./guard/admin.guard";
 
 import { VMSComponent } from "./vms/vms.component";
 import { DashboardComponent } from "./vms/dashboard/dashboard.component";
 import { IndividualRequestComponent } from "./vms/individual-request//individual-request.component";
 import { ManageRequestComponent } from "./vms/manage-request/manage-request.component";
 import { BulkRequestComponent } from "./vms/bulk-request/bulk-request.component";
-import { SubmitFormComponent } from "./vms/bulk-request/submit-form/submit-form.component";
 
 const visitorRoutes: Routes = [
   {
@@ -22,15 +22,17 @@ const visitorRoutes: Routes = [
       {
         path: "individual-request/:visitor-type",
         component: IndividualRequestComponent,
-        canActivate: [VisitorTypeGuard]
+        canActivate: [EmployeeGuard]
       },
       {
         path: "bulk-request",
-        component: BulkRequestComponent
+        component: BulkRequestComponent, 
+        canActivate: [EmployeeGuard, AdminGuard]
       },
       {
         path: "manage",
-        component: ManageRequestComponent
+        component: ManageRequestComponent,
+        canActivate: [EmployeeGuard]
       }
     ]
   }
