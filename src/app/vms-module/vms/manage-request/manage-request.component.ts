@@ -12,6 +12,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class ManageRequestComponent implements OnInit {
   visitorData: VisitorForm[];
   bulkForm: FormGroup;
+  noData: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -26,9 +27,13 @@ export class ManageRequestComponent implements OnInit {
       if (data && data.length > 0) {
         this.visitorData = data;
         this.createForm();
-        this.spinner.hide();
+      } else {
+        this.noData = 'Nothing to Show';
       }
+      this.spinner.hide();
     }), error => {
+      this.spinner.hide();
+    }, () => {
       this.spinner.hide();
     }
   }

@@ -23,7 +23,6 @@ export class VisitorService {
       }
       return this.post(obj[0]);
     } else {
-      this.validateForm(formGroup);
       return of('invalid');
     }
   }
@@ -67,17 +66,17 @@ export class VisitorService {
   objectMapperBulk(data: any) {
     const obj = (<Array<any>>data.visitors).map(visitorObj => {
       const visitor: VisitorForm = new VisitorForm();
-      visitor.visitorType = data.visitorType;
       visitor.name = visitorObj.name;
       visitor.photo = visitorObj.name + '.jpg';
       visitor.dateTimeAllowedFrom = this.myDataPickerToDate(data.dateTimeAllowedFrom);
       visitor.dateTimeAllowedTo = this.myDataPickerToDate(data.dateTimeAllowedTo);
       visitor.idType = visitorObj.idType;
-      visitor.govtId = visitorObj.govtId;
-      visitor.phoneNumber = visitorObj.phoneNumber;
+      visitor.govtId = new String(visitorObj.govtId).toString();
+      visitor.phoneNumber = new String(visitorObj.phoneNumber).toString();
       visitor.email = visitorObj.email;
+      visitor.visitorType = visitorObj.visitorType;
       visitor.accomodationReq = this.stringFalseToBooleanExcel(visitorObj.accomodationReq);
-      visitor.empMail = data.empMail;
+      visitor.empMail = visitorObj.empMail;
       visitor.location = data.location;
       return visitor;
     });

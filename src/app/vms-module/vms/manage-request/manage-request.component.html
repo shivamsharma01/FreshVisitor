@@ -1,6 +1,7 @@
 <ngx-spinner bdOpacity=0.9 bdColor="#333" size="large" color="#fff" type="ball-atom" fullScreen="false">
   <p style="color: white"> Loading. Please Wait...</p>
 </ngx-spinner>
+<div *ngIf="noData" class="alert alert-warning"><h2>{{noData}}</h2></div>
 <div class="container jumbotron bulk-submit-form" *ngIf="bulkForm">
   <form [formGroup]="bulkForm">
     <div formArrayName="visitors" *ngFor="let item of bulkForm.get('visitors')?.controls; let i = index;">
@@ -16,7 +17,7 @@
                 [formControl]="bulkForm.get('visitors').at(i).get('visitorId')">
             </div>
             <div class="col-sm-3">
-              <label class="control-label col-sm-12" [for]="'empMail'">Visitor Email Id</label>
+              <label class="control-label col-sm-12" [for]="'empMail'">Approver Email Id</label>
             </div>
             <div class="col-sm-3">
               <input disabled=true [class.error-form]="bulkForm.get('visitors').at(i).get('empMail').invalid"
@@ -28,7 +29,7 @@
         <div class="form-group">
           <div class="row">
             <div class="col-sm-3">
-              <label class="control-label col-sm-12" [for]="'visitorType'">Visitor Id</label>
+              <label class="control-label col-sm-12" [for]="'visitorType'">Visitor Type</label>
             </div>
             <div class="col-sm-3">
               <input disabled=true [class.error-form]="bulkForm.get('visitors').at(i).get('visitorType').invalid"
@@ -36,7 +37,7 @@
                 [formControl]="bulkForm.get('visitors').at(i).get('visitorType')">
             </div>
             <div class="col-sm-3">
-              <label class="control-label col-sm-12" [for]="'name'">Visitor Id</label>
+              <label class="control-label col-sm-12" [for]="'name'">Visitor Name</label>
             </div>
             <div class="col-sm-3">
               <input disabled=true [class.error-form]="bulkForm.get('visitors').at(i).get('name').invalid" type="text"
@@ -47,7 +48,7 @@
         <div class="form-group">
           <div class="row">
             <div class="col-sm-3">
-              <label class="control-label col-sm-12" [for]="'dateTimeAllowedFrom'">Visitor Id</label>
+              <label class="control-label col-sm-12" [for]="'dateTimeAllowedFrom'">Entry Date</label>
             </div>
             <div class="col-sm-3">
               <input disabled=true
@@ -56,7 +57,7 @@
                 [formControl]="bulkForm.get('visitors').at(i).get('dateTimeAllowedFrom')">
             </div>
             <div class="col-sm-3">
-              <label class="control-label col-sm-12" [for]="'dateTimeAllowedTo'">Visitor Id</label>
+              <label class="control-label col-sm-12" [for]="'dateTimeAllowedTo'">Exit Date</label>
             </div>
             <div class="col-sm-3">
               <input disabled=true [class.error-form]="bulkForm.get('visitors').at(i).get('dateTimeAllowedTo').invalid"
@@ -68,14 +69,14 @@
         <div class="form-group">
           <div class="row">
             <div class="col-sm-3">
-              <label class="control-label col-sm-12" [for]="'idType'">Visitor Id</label>
+              <label class="control-label col-sm-12" [for]="'idType'">Visitor Unique Id</label>
             </div>
             <div class="col-sm-3">
               <input disabled=true [class.error-form]="bulkForm.get('visitors').at(i).get('idType').invalid" type="text"
                 class="form-control" [id]="'idType'" [formControl]="bulkForm.get('visitors').at(i).get('idType')">
             </div>
             <div class="col-sm-3">
-              <label class="control-label col-sm-12" [for]="'govtId'">Visitor Id</label>
+              <label class="control-label col-sm-12" [for]="'govtId'">Visitor Unique Id Type</label>
             </div>
             <div class="col-sm-3">
               <input disabled=true [class.error-form]="bulkForm.get('visitors').at(i).get('govtId').invalid" type="text"
@@ -86,7 +87,7 @@
         <div class="form-group">
           <div class="row">
             <div class="col-sm-3">
-              <label class="control-label col-sm-12" [for]="'phoneNumber'">Visitor Id</label>
+              <label class="control-label col-sm-12" [for]="'phoneNumber'">Visitor Phone Number</label>
             </div>
             <div class="col-sm-3">
               <input disabled=true [class.error-form]="bulkForm.get('visitors').at(i).get('phoneNumber').invalid"
@@ -94,7 +95,7 @@
                 [formControl]="bulkForm.get('visitors').at(i).get('phoneNumber')">
             </div>
             <div class="col-sm-3">
-              <label class="control-label col-sm-12" [for]="'location'">Visitor Id</label>
+              <label class="control-label col-sm-12" [for]="'location'">Visitor Location</label>
             </div>
             <div class="col-sm-3">
               <input disabled=true [class.error-form]="bulkForm.get('visitors').at(i).get('location').invalid"
@@ -106,14 +107,14 @@
         <div class="form-group">
           <div class="row">
             <div class="col-sm-3">
-              <label class="control-label col-sm-12" [for]="'status'">Visitor Id</label>
+              <label class="control-label col-sm-12" [for]="'status'">Current Status</label>
             </div>
             <div class="col-sm-3">
               <input disabled=true [class.error-form]="bulkForm.get('visitors').at(i).get('status').invalid" type="text"
                 class="form-control" [id]="'status'" [formControl]="bulkForm.get('visitors').at(i).get('status')">
             </div>
             <div class="col-sm-3">
-              <label class="control-label col-sm-12" [for]="'accomodationReq'">Visitor Id</label>
+              <label class="control-label col-sm-12" [for]="'accomodationReq'">Accomodation Status</label>
             </div>
             <div class="col-sm-3">
               <input disabled=true [class.error-form]="bulkForm.get('visitors').at(i).get('accomodationReq').invalid"

@@ -58,6 +58,7 @@ export class IndividualRequestComponent implements OnInit {
         Validators.pattern(/^[A-Za-z][A-Za-z ]{1,}[A-Za-z]$/)
       ]),
       phoneNumber: this.formBuilder.control(null, [
+        Validators.required,
         Validators.minLength(10),
         Validators.maxLength(10),
         Validators.pattern(/\d{1,}/)
@@ -87,6 +88,10 @@ export class IndividualRequestComponent implements OnInit {
   }
 
   submitForm() {
+    if (this.visitorForm.invalid) {
+      this.visitorService.validateForm(this.visitorForm);
+      return;
+    }
     this.visitorService.submitForm(this.visitorForm).subscribe(data => {
       this.router.navigate(["vms/dashboard"]);
     }, error => {

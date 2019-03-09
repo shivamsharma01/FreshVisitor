@@ -74,6 +74,7 @@ export class SubmitFormComponent implements OnInit {
   submit() {
     if(this.bulkForm.invalid) {
       this.errorMsg = 'Error in Form';
+      return;
     }
     this.visitorService.submitBulkForm(this.bulkForm).subscribe(data => {
       console.log(data);
