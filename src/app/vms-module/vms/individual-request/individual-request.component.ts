@@ -31,13 +31,12 @@ export class IndividualRequestComponent implements OnInit {
     this.myDatePickerOptions = this.visitorService.configureDatePicker();
     this.createForm();
   }
-
   createForm() {
     this.visitorForm = this.formBuilder.group({
-      approverName: { value: this.authService.user.Name, disabled: true},
-      approverEmployeeNo: this.authService.user.EmployeeId,
-      visitLocation: this.formBuilder.control('', [Validators.required]),
-      visitDate: this.formBuilder.control(null, [Validators.required]),
+      empMail: { value: this.authService.user.Email, disabled: true},
+      location: this.formBuilder.control('', [Validators.required]),
+      dateTimeAllowedFrom: this.formBuilder.control(null, [Validators.required]),
+      dateTimeAllowedTo: this.formBuilder.control(null, [Validators.required]),
       visitorType: this.formBuilder.control(''),
       visitors: this.createVisitorArray()
     });
@@ -54,23 +53,24 @@ export class IndividualRequestComponent implements OnInit {
 
   createVisitor(): FormGroup {
     return this.formBuilder.group({
-      visitorName: this.formBuilder.control(null, [
+      name: this.formBuilder.control(null, [
         Validators.required,
         Validators.pattern(/^[A-Za-z][A-Za-z ]{1,}[A-Za-z]$/)
       ]),
-      visitorMobileNo: this.formBuilder.control(null, [
+      phoneNumber: this.formBuilder.control(null, [
         Validators.minLength(10),
         Validators.maxLength(10),
         Validators.pattern(/\d{1,}/)
       ]),
-      visitorEmailId: this.formBuilder.control(null, [
+      email: this.formBuilder.control(null, [
         Validators.required,
         Validators.email,
         Validators.pattern(/^[A-Za-z0-9_.]{3,}@[A-Za-z]+(\.[a-z]{2,}){1,2}$/)
       ]),
-      visitorUIdType: this.formBuilder.control('', [Validators.required]),
-      visitorUId: this.formBuilder.control(null, [Validators.required]),
-      visitorPhoto: this.formBuilder.control(null)
+      accomodationReq: this.formBuilder.control("false", [Validators.required]),
+      idType: this.formBuilder.control('', [Validators.required]),
+      govtId: this.formBuilder.control(null, [Validators.required]),
+      photo: this.formBuilder.control(null)
     });
   }
 
@@ -87,7 +87,9 @@ export class IndividualRequestComponent implements OnInit {
   }
 
   submitForm() {
-    this.visitorService.submitForm(this.visitorForm);
+    this.visitorService.submitForm(this.visitorForm).subscribe(data => {
+      console.log(data);
+    });
   }
 
   onSelectFile(event, index) {
@@ -96,7 +98,7 @@ export class IndividualRequestComponent implements OnInit {
       reader.readAsDataURL(event.target.files[0]); 
       this.spinner.show();
       reader.onload = (event) => {
-        (<FormArray>this.visitorForm.get('visitors')).at(index).get('visitorPhoto').setValue(event.target['result']);
+        (<FormArray>this.visitorForm.get('visitors')).at(index).get('photo').setValue(event.target['result']);
         this.spinner.hide();
       }
     }

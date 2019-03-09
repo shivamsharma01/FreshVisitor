@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { TemplateService } from "../template.service";
-import { VisitorData } from "src/app/model/visitor-form";
+import { VisitorData } from "src/app/model/visitor-form-excel";
 import { FormGroup, FormBuilder, Validators, FormArray } from "@angular/forms";
 import { AuthService } from "src/app/auth/auth.service";
 
@@ -11,25 +11,21 @@ import { AuthService } from "src/app/auth/auth.service";
 })
 export class SubmitFormComponent implements OnInit {
   @Input() data: VisitorData[];
-  visitorForm: FormGroup;
+  bulkForm: FormGroup;
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService,
-    private templateService: TemplateService
-  ) {}
+    private authService: AuthService) { }
 
   ngOnInit() {
-    this.visitorForm = this.formBuilder.group({
+    this.bulkForm = this.formBuilder.group({
       approverName: { value: this.authService.user.Name, disabled: true },
       approverEmployeeNo: {
         value: this.authService.user.EmployeeId,
         disabled: true
       },
-      visitLocation: this.formBuilder.control("", [Validators.required]),
-      visitDate: this.formBuilder.control('', [Validators.required]),
-      visitorType: this.formBuilder.control("", [Validators.required])
+      visitDate: this.formBuilder.control('', [Validators.required])
     });
-    this.visitorForm.registerControl("visitors", this.createVisitorArray());
+    this.bulkForm.registerControl("visitors", this.createVisitorArray());
   }
 
   createVisitorArray(): FormArray {
@@ -46,6 +42,7 @@ export class SubmitFormComponent implements OnInit {
             Validators.maxLength(10),
             Validators.pattern(/\d{1,}/)
           ]),
+          visitLocation: this.formBuilder.control(visitor.VISIT_LOCATION, [Validators.required]),
           visitorEmailId: this.formBuilder.control(visitor.EMAIL, [
             Validators.required,
             Validators.email,
@@ -54,11 +51,16 @@ export class SubmitFormComponent implements OnInit {
             )
           ]),
           visitorUIdType: this.formBuilder.control(visitor.UNIQUE_TYPE, [Validators.required]),
-          visitorUId: this.formBuilder.control(visitor.UNIQUE_ID, [Validators.required])
+          visitorUId: this.formBuilder.control(visitor.UNIQUE_ID, [Validators.required]),
+          visitorType: this.formBuilder.control(visitor.VISITOR_TYPE, [Validators.required])
         })
       );
     });
     return formArray;
   }
+  
+  submit() {
+    console.log(this.bulkForm);
+  }
 
-}
+}				

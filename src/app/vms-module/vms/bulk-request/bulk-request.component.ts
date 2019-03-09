@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { saveAs as importedSaveAs } from "file-saver";
 import * as XLSX from "xlsx";
 import { TemplateService } from "./template.service";
-import { VisitorData } from "src/app/model/visitor-form";
+import { VisitorData } from "src/app/model/visitor-form-excel";
 
 @Component({
   selector: "app-bulk-request",

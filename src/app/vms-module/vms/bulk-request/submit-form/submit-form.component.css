@@ -1,3 +1,11 @@
 th, td {
     text-align: center;
 }
+
+.jumbotron.visitor-form {
+    border: 1px solid black;
+}
+
+input.error-form {
+    color: red;
+}

@@ -1,14 +1,16 @@
-export class VisitorData {
-  SNO: number;
-  NAME: string;
-  EMAIL: string;
-  MOBILE: string;
-  UNIQUE_TYPE: string;
-  UNIQUE_ID: string;
-  VISITOR_TYPE: string;
-  VISIT_LOCATION: string;
-  DATE_IN: string;
-  TIME_IN: string;
-  DATE_OUT: string;
-  TIME_OUT: string;
+export class VisitorForm {
+    visitorId: string;
+    visitorType: string;
+    name: string;
+    photo: string;
+    dateTimeAllowedFrom: string;
+    dateTimeAllowedTo: string;
+    idType: string;
+    govtId: string;
+    phoneNumber: string;
+    email: string;
+    status: string;
+    accomodationReq: boolean;
+    empMail: string;
+    location: string;
 }

@@ -37,9 +37,10 @@ export class LoginComponent implements OnInit {
     const user = new User();
     user.Name = 'shivam';
     user.EmployeeId = '1315';
-    user.JobLevel = 'Admin';
+    user.JobLevel = '6';
     user.LoginStatus = 'Success';
     this.authService.user = user;
+    this.authService.user.Email = 'asdhagd@gmail.com';
     this.authService.isLoggedIn = true;
     this.router.navigate(['vms/dashboard']);
   }
@@ -56,6 +57,7 @@ export class LoginComponent implements OnInit {
   //         this.authService.isLoggedIn = true;
   //         this.loginMessage = 'Success';
   //         this.authService.user = data;
+  //            this.authService.user.Email = this.formGroup.get('username').value;
   //         this.router.navigate(['vms/dashboard']);
   //       } else {
   //         this.authService.user = null;

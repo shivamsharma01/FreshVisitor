@@ -165,11 +165,11 @@ form > div.header-common, form > div div.visitor-form {
   background-color: white;
 }
 
-.visitor-type-container {
-
-}
-
 .visitor-type {
   display: inline;
   font-size: 24px;
+}
+
+.radio-accomodation {
+  padding-right: 15px;
 }
