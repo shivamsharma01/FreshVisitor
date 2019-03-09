@@ -9,7 +9,6 @@
   <div class="jumbotron alert alert-warning">
     <div class="row">
       <div class="col-sm-12">
-        <div class="col-sm-8">
             <strong>Note! Follow the steps for bulk approval request</strong>
             <p>1. Download the template for bulk requests</p><button (click)="downloadFile()">download</button>
             <p>
@@ -17,7 +16,6 @@
                  refer sheet 2 for supported <strong>'Visitor Types'</strong> & <strong>'Unique Id Types'</strong>
             </p>
             <input type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" ID="fileSelect" runat="server" (change)="onFileChange($event)" multiple="false" />
-        </div>
       </div>
     </div>
     <div class="alert alert-danger" *ngIf="errorMsg">{{errorMsg}}</div>
