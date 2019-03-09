@@ -4,7 +4,7 @@ import { NgxSpinnerService } from "ngx-spinner";
 import { AuthService } from "src/app/auth/auth.service";
 import { VisitorService } from "src/app/vms-module/service/visitor.service";
 import { IMyOptions } from "mydatepicker";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { map } from "rxjs/operators";
 
 @Component({
@@ -23,7 +23,8 @@ export class IndividualRequestComponent implements OnInit {
     private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
     private spinner: NgxSpinnerService,
-    private visitorService: VisitorService
+    private visitorService: VisitorService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -87,6 +88,7 @@ export class IndividualRequestComponent implements OnInit {
 
   submitForm() {
     this.visitorService.submitForm(this.visitorForm).subscribe(data => {
+      this.router.navigate(["vms/dashboard"]);
     });
   }
 

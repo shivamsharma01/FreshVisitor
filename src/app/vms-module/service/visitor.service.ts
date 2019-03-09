@@ -54,6 +54,7 @@ export class VisitorService {
     const obj = (<Array<any>>data.visitors).map(visitorObj => {
       const visitor: VisitorForm = Object.assign({}, visitorObj);
       visitor.photo = visitorObj.name + '.jpg';
+      visitor.empMail= data.empMail;
       visitor.dateTimeAllowedFrom = this.myDataPickerToDate(data.dateTimeAllowedFrom);
       visitor.dateTimeAllowedTo = this.myDataPickerToDate(data.dateTimeAllowedTo);
       visitor.accomodationReq = this.stringFalseToBoolean(visitorObj.accomodationReq);
