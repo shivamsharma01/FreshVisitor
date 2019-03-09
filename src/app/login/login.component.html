@@ -3,12 +3,16 @@
 </ngx-spinner>
 <div class="jumbotron login-form">
     <form class="form-group" [formGroup]="formGroup">
-        <label for="uname"><b>Username</b></label>
-        <input type="text" formControlName="employeeId" placeholder="Enter Username" name="uname" required>
-
-        <label for="psw"><b>Password</b></label>
-        <input type="password" formControlName="employeeName" placeholder="Enter Password" name="psw" required>
-
+        <div class="row">
+            <div class="col-sm-12">
+                <label for="uname"><b>Username</b></label>
+                <input type="text" formControlName="employeeId" placeholder="Enter Username" name="uname" required>
+            </div>
+            <div class="col-sm-12">
+                <label for="psw"><b>Password</b></label>
+                <input type="password" formControlName="employeeName" placeholder="Enter Password" name="psw" required>
+            </div>
+        </div>
         <button type="submit" (click)="login()">Login</button>
     </form>
     <div class="alert alert-danger" *ngIf="loginMessage">

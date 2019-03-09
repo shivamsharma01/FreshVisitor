@@ -1,8 +1,12 @@
 .login-form {
     padding-right: 60px;
     padding-left: 60px;
-    position: fixed;
+    position: sticky;
     top: 50%;
     width: 100%;
     /* right: 50%; */
+}
+
+label {
+    margin: 20px;
 }
