@@ -1,120 +1,128 @@
-<form class="jumbotron create-request form-horizontal" [formGroup]="visitorForm">
-    <div class="row header-common">
-      <div class="row">
-        <div class="col-sm-6 text-left">
-          <h3 class="visitor-type-container">Create Request for <p class="visitor-type">
-            <strong>{{ visitorForm?.get('visitorType').value}}</strong></p></h3>
-        </div>
-      </div>
-        <div class="col-sm-4">
-          <div class="form-group">
-            <div class="row">
-              <label class="control-label col-sm-12" [for]="'visitLocation'">Visit Location</label>
-              <div class="col-sm-12">
-                <label [class.error-form]="visitorForm.get('visitLocation').touched && visitorForm.get('visitLocation').invalid" 
-                  class="custom-select" for="visitLocation">
-                  <select id="visitLocation" name="visitLocation" formControlName="visitLocation">
-                    <option value="">Select an option</option>
-                    <option>Bangalore</option>
-                    <option>Bhubaneswar</option>
-                    <option>Chandigarh</option>
-                    <option>Chennai</option>
-                    <option>Gurgaon</option>
-                    <option>Hyderabad STP: Pearl Park</option>
-                    <option>Hyderabad SEZ: Prakriti Park</option>
-                    <option>Indore</option>
-                    <option>Jaipur</option>
-                    <option>Mangalore</option>
-                    <option>Mangalore SEZ</option>
-                    <option>Mohali</option>
-                    <option>Mysore</option>
-                    <option>Nagpur</option>
-                    <option>Pune</option>
-                    <option>Thiruvananthapuram</option>
-                  </select>
-                </label>
-              </div>
-              <div class="col-sm-12">
-                <app-error-component [control]="visitorForm.controls.visitLocation" [display]="'Visit Location'"></app-error-component>
-              </div>
-            </div>
-          </div>
-        </div>
-      <div class="col-sm-4">
+<ngx-spinner bdOpacity=0.9 bdColor="#333" size="large" color="#fff" type="ball-atom" fullScreen="false">
+  <p style="color: white"> Loading. Please Wait...</p>
+</ngx-spinner>
+<div class="container jumbotron bulk-submit-form" *ngIf="bulkForm">
+  <form [formGroup]="bulkForm">
+    <div formArrayName="visitors" *ngFor="let item of bulkForm.get('visitors')?.controls; let i = index;">
+      <div class="visitor-form animated slideInRight delay-2s" [formGroupName]="i">
         <div class="form-group">
           <div class="row">
-            <label class="control-label col-sm-12" [for]="'visitDate'">Visit Date</label>
-            <div class="col-sm-12">
-              <my-date-picker [class.date-form-error]="visitorForm.get('visitDate').touched && visitorForm.get('visitDate').invalid" 
-              name="visitDate" [options]="myDatePickerOptions" [placeholder]="'placeholder'" formControlName="visitDate"></my-date-picker>
+            <div class="col-sm-3">
+              <label class="control-label col-sm-12" [for]="'visitorId'">Visitor Id</label>
             </div>
-            <div class="col-sm-12">
-              <app-error-component [control]="visitorForm.controls.visitDate" [display]="'Visitor Entry Date'"></app-error-component>
+            <div class="col-sm-3">
+              <input disabled=true [class.error-form]="bulkForm.get('visitors').at(i).get('visitorId').invalid"
+                type="text" class="form-control" [id]="'visitorId'"
+                [formControl]="bulkForm.get('visitors').at(i).get('visitorId')">
+            </div>
+            <div class="col-sm-3">
+              <label class="control-label col-sm-12" [for]="'empMail'">Visitor Email Id</label>
+            </div>
+            <div class="col-sm-3">
+              <input disabled=true [class.error-form]="bulkForm.get('visitors').at(i).get('empMail').invalid"
+                type="text" class="form-control" [id]="'empMail'"
+                [formControl]="bulkForm.get('visitors').at(i).get('empMail')">
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-sm-3">
+              <label class="control-label col-sm-12" [for]="'visitorType'">Visitor Id</label>
+            </div>
+            <div class="col-sm-3">
+              <input disabled=true [class.error-form]="bulkForm.get('visitors').at(i).get('visitorType').invalid"
+                type="text" class="form-control" [id]="'visitorType'"
+                [formControl]="bulkForm.get('visitors').at(i).get('visitorType')">
+            </div>
+            <div class="col-sm-3">
+              <label class="control-label col-sm-12" [for]="'name'">Visitor Id</label>
+            </div>
+            <div class="col-sm-3">
+              <input disabled=true [class.error-form]="bulkForm.get('visitors').at(i).get('name').invalid" type="text"
+                class="form-control" [id]="'name'" [formControl]="bulkForm.get('visitors').at(i).get('name')">
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-sm-3">
+              <label class="control-label col-sm-12" [for]="'dateTimeAllowedFrom'">Visitor Id</label>
+            </div>
+            <div class="col-sm-3">
+              <input disabled=true
+                [class.error-form]="bulkForm.get('visitors').at(i).get('dateTimeAllowedFrom').invalid" type="text"
+                class="form-control" [id]="'dateTimeAllowedFrom'"
+                [formControl]="bulkForm.get('visitors').at(i).get('dateTimeAllowedFrom')">
+            </div>
+            <div class="col-sm-3">
+              <label class="control-label col-sm-12" [for]="'dateTimeAllowedTo'">Visitor Id</label>
+            </div>
+            <div class="col-sm-3">
+              <input disabled=true [class.error-form]="bulkForm.get('visitors').at(i).get('dateTimeAllowedTo').invalid"
+                type="text" class="form-control" [id]="'dateTimeAllowedTo'"
+                [formControl]="bulkForm.get('visitors').at(i).get('dateTimeAllowedTo')">
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-sm-3">
+              <label class="control-label col-sm-12" [for]="'idType'">Visitor Id</label>
+            </div>
+            <div class="col-sm-3">
+              <input disabled=true [class.error-form]="bulkForm.get('visitors').at(i).get('idType').invalid" type="text"
+                class="form-control" [id]="'idType'" [formControl]="bulkForm.get('visitors').at(i).get('idType')">
+            </div>
+            <div class="col-sm-3">
+              <label class="control-label col-sm-12" [for]="'govtId'">Visitor Id</label>
+            </div>
+            <div class="col-sm-3">
+              <input disabled=true [class.error-form]="bulkForm.get('visitors').at(i).get('govtId').invalid" type="text"
+                class="form-control" [id]="'govtId'" [formControl]="bulkForm.get('visitors').at(i).get('govtId')">
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-sm-3">
+              <label class="control-label col-sm-12" [for]="'phoneNumber'">Visitor Id</label>
+            </div>
+            <div class="col-sm-3">
+              <input disabled=true [class.error-form]="bulkForm.get('visitors').at(i).get('phoneNumber').invalid"
+                type="text" class="form-control" [id]="'phoneNumber'"
+                [formControl]="bulkForm.get('visitors').at(i).get('phoneNumber')">
+            </div>
+            <div class="col-sm-3">
+              <label class="control-label col-sm-12" [for]="'location'">Visitor Id</label>
+            </div>
+            <div class="col-sm-3">
+              <input disabled=true [class.error-form]="bulkForm.get('visitors').at(i).get('location').invalid"
+                type="text" class="form-control" [id]="'location'"
+                [formControl]="bulkForm.get('visitors').at(i).get('location')">
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-sm-3">
+              <label class="control-label col-sm-12" [for]="'status'">Visitor Id</label>
+            </div>
+            <div class="col-sm-3">
+              <input disabled=true [class.error-form]="bulkForm.get('visitors').at(i).get('status').invalid" type="text"
+                class="form-control" [id]="'status'" [formControl]="bulkForm.get('visitors').at(i).get('status')">
+            </div>
+            <div class="col-sm-3">
+              <label class="control-label col-sm-12" [for]="'accomodationReq'">Visitor Id</label>
+            </div>
+            <div class="col-sm-3">
+              <input disabled=true [class.error-form]="bulkForm.get('visitors').at(i).get('accomodationReq').invalid"
+                type="text" class="form-control" [id]="'accomodationReq'"
+                [formControl]="bulkForm.get('visitors').at(i).get('accomodationReq')">
             </div>
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
-        <app-form-control [name]="'approverName'" [display]="'Requester'" [control]="visitorForm.controls.approverName"></app-form-control>
-      </div>
     </div>
-    <div formArrayName="visitors" *ngFor="let item of visitorForm.get('visitors')?.controls; let i = index;">
-      <div class="visitor-form animated slideInRight delay-2s" [formGroupName]="i">
-        <div class="row">
-          <div class="col-sm-4">
-            <app-form-control [name]="'visitorName'" [display]="'Visitor Name'" [control]="item.controls.visitorName"></app-form-control>
-          </div>
-          <div class="col-sm-8 visitor-unique">
-            <div class="row">
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <div class="row">
-                    <label class="control-label col-sm-12" [for]="visitorUIdType">Visitor Unique Id Type</label>
-                    <div class="col-sm-12">
-                      <label [class.error-form]="visitorForm.get('visitors').at(i).get('visitorUIdType').touched && visitorForm.get('visitors').at(i).get('visitorUIdType').invalid"
-                      class="custom-select" for="visitorUIdType">
-                        <select id="visitorUIdType" name="visitorUIdType" formControlName="visitorUIdType">
-                          <option value="">Select an option</option>
-                          <option>Aadhar</option>
-                          <option>Driving License</option>
-                          <option>Passport</option>
-                          <option>Voter Id</option>
-                        </select>
-                      </label>
-                    </div>
-                    <div class="col-sm-12">
-                      <app-error-component [control]="item.controls.visitorUIdType" [display]="'Visitor Unique Id Type'"></app-error-component>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6">
-                <app-form-control [name]="'visitorUId'" [display]="'Visitor Unique Id'" [control]="item.controls.visitorUId"></app-form-control>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-6">
-              <app-form-control [name]="'visitorEmailId'" [display]="'Visitor Email Id'" [control]="item.controls.visitorEmailId"></app-form-control>
-          </div>
-          <div class="col-sm-6">
-              <app-form-control [name]="'visitorMobileNo'" [display]="'Visitor Mobile No'" [control]="item.controls.visitorMobileNo"></app-form-control>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-4">
-            <p *ngIf="!item.controls.visitorPhoto.value">Upload Visitor Photo</p>
-              <img [src]="item.controls.visitorPhoto.value" *ngIf="item.controls.visitorPhoto.value" height="200"> <br/>
-              <input type='file' (change)="onSelectFile($event, i)">
-          </div>
-        </div>
-        <div class="add-remove-container">
-            <button class="button add-button" [disabled]="visitorForm.get('visitors').length === maxLimit" (click)="addItem()"><i class="fa fa-plus" aria-hidden="true"></i></button>
-            <button class="button remove-button" *ngIf="i !== 0" [disabled]="i == 0" (click)="removeItem(i)"><i class="fa fa-minus" aria-hidden="true"></i></button>
-        </div>
-      </div>   
-    </div>
-    <button class="button" (click)="submitForm()">Submit</button>
-    <button class="button" (click)="resetForm()">Reset</button> 
   </form>
+</div>

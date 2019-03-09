@@ -11,6 +11,7 @@ import { Observable, of } from 'rxjs';
 export class VisitorService {
   submitUrl: string = 'https://visitor-management-svc.cfapps.io/api/v1/submitRequest';
   multipleSubmitUrl: string = 'https://visitor-management-svc.cfapps.io/api/v1/submitRequests';
+  getSubmitted: string = 'https://dataservice.cfapps.io/dataSvc/api/v1/visitorsByEmpMail?empMail=';
 
   constructor(private restClient: HttpClient) { }
 
@@ -140,6 +141,9 @@ export class VisitorService {
     };
   }
 
+  getRequestedForms(empId: string) : Observable<VisitorForm[]>{
+    return this.restClient.get<VisitorForm[]>(this.getSubmitted+empId);
+  }
 }
 
 class CustomDate {
