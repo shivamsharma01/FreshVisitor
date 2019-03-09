@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AuthService } from '../auth/auth.service';
-import { User } from '../model/user';
+import { User, UserResponse } from '../model/user';
 
 
 @Component({
@@ -24,8 +24,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.formGroup = this.formBuilder.group({
-      username: this.formBuilder.control('', Validators.required),
-      password: this.formBuilder.control('', Validators.required)
+      employeeId: this.formBuilder.control('', Validators.required),
+      employeeName: this.formBuilder.control('', Validators.required)
     })
   }
 
@@ -33,41 +33,44 @@ export class LoginComponent implements OnInit {
     this.message = 'Logged ' + (this.authService.isLoggedIn ? 'in' : 'out');
   }
 
-  login() {
-    const user = new User();
-    user.Name = 'shivam';
-    user.EmployeeId = '1315';
-    user.JobLevel = '6';
-    user.LoginStatus = 'Success';
-    this.authService.user = user;
-    this.authService.user.Email = 'asdhagd@gmail.com';
-    this.authService.isLoggedIn = true;
-    this.router.navigate(['vms/dashboard']);
-  }
-  
   // login() {
-  //   this.router.navigate(['vms/dashboard']); 
-  //   if (this.formGroup.invalid) {
-  //     this.loginMessage = 'Please Enter Username and Password';
-  //     return;
-  //   } else {
-  //     this.spinner.show();
-  //     this.authService.login(this.formGroup.value).subscribe((data: User) => {
-  //       if (data.LoginStatus === 'Success') {
-  //         this.authService.isLoggedIn = true;
-  //         this.loginMessage = 'Success';
-  //         this.authService.user = data;
-  //            this.authService.user.Email = this.formGroup.get('username').value;
-  //         this.router.navigate(['vms/dashboard']);
-  //       } else {
-  //         this.authService.user = null;
-  //       }
-  //     });
-      
-  //   }
-  //   this.loginMessage = 'Login Failed. Please Try Again';
-  //   this.spinner.hide();
+  //   const user = new User();
+  //   user.Name = 'shivam';
+  //   user.EmployeeId = '1315';
+  //   user.JobLevel = '6';
+  //   user.LoginStatus = 'Success';
+  //   this.authService.user = user;
+  //   this.authService.user.Email = 'asdhagd@gmail.com';
+  //   this.authService.isLoggedIn = true;
+  //   this.router.navigate(['vms/dashboard']);
   // }
+
+  login() {
+    this.router.navigate(['vms/dashboard']);
+    if (this.formGroup.invalid) {
+      this.loginMessage = 'Please Enter Username and Password';
+      return;
+    } else {
+      this.spinner.show();
+      this.authService.login(this.formGroup.value).subscribe((data: UserResponse) => {
+        if (!!data.jobLevel) {
+          this.authService.isLoggedIn = true;
+          this.authService.user = new User();
+          this.authService.user.EmployeeId = data.employeeId;
+          this.authService.user.Name = data.employeeName;
+          this.authService.user.JobLevel = data.jobLevel;
+          this.authService.user.Email = this.formGroup.get('employeeId').value + '@infosys.com';
+          this.router.navigate(['vms/dashboard']).then(() => {
+            this.spinner.hide();
+          });
+        } else {
+          this.loginMessage = 'Login Failed. Please Try Again';
+          this.authService.user = null;
+          this.spinner.hide();
+        }
+      });
+    }
+  }
 
   logout() {
     this.authService.logout();

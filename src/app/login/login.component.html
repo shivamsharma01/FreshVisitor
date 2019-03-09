@@ -4,10 +4,10 @@
 <div class="jumbotron login-form">
     <form class="form-group" [formGroup]="formGroup">
         <label for="uname"><b>Username</b></label>
-        <input type="text" formControlName="username" placeholder="Enter Username" name="uname" required>
+        <input type="text" formControlName="employeeId" placeholder="Enter Username" name="uname" required>
 
         <label for="psw"><b>Password</b></label>
-        <input type="password" formControlName="password" placeholder="Enter Password" name="psw" required>
+        <input type="password" formControlName="employeeName" placeholder="Enter Password" name="psw" required>
 
         <button type="submit" (click)="login()">Login</button>
     </form>

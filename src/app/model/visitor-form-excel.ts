@@ -7,6 +7,7 @@ export class VisitorData {
   UNIQUE_ID: string;
   VISITOR_TYPE: string;
   VISIT_LOCATION: string;
+  ACCOMODATION: string;
   DATE_IN: string;
   TIME_IN: string;
   DATE_OUT: string;

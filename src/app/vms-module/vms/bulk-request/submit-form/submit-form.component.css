@@ -9,3 +9,7 @@ th, td {
 input.error-form {
     color: red;
 }
+
+.bulk-submit-form {
+    border: 1px solid black;
+}

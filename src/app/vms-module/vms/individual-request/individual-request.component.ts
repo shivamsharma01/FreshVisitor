@@ -27,7 +27,6 @@ export class IndividualRequestComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    console.log(this.authService.user);
     this.myDatePickerOptions = this.visitorService.configureDatePicker();
     this.createForm();
   }
@@ -88,7 +87,6 @@ export class IndividualRequestComponent implements OnInit {
 
   submitForm() {
     this.visitorService.submitForm(this.visitorForm).subscribe(data => {
-      console.log(data);
     });
   }
 

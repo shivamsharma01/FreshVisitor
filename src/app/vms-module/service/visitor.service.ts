@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormGroup, AbstractControl, FormControl, FormArray } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { CreateForm } from 'src/app/model/new-form';
 import { IMyOptions } from 'mydatepicker';
 import { VisitorForm } from 'src/app/model/visitor-form';
 import { Observable, of } from 'rxjs';
@@ -11,13 +10,16 @@ import { Observable, of } from 'rxjs';
 })
 export class VisitorService {
   submitUrl: string = 'https://visitor-management-svc.cfapps.io/api/v1/submitRequest';
+  multipleSubmitUrl: string = 'https://visitor-management-svc.cfapps.io/api/v1/submitRequests';
 
   constructor(private restClient: HttpClient) { }
 
   submitForm(formGroup: FormGroup): Observable<string> {
-    console.log(formGroup.value);
     if (formGroup.valid) {
       const obj = this.objectMapper(formGroup.getRawValue());
+      if (obj.length > 1) {
+        return this.postMultiple(obj);
+      }
       return this.post(obj[0]);
     } else {
       this.validateForm(formGroup);
@@ -25,14 +27,40 @@ export class VisitorService {
     }
   }
 
+  submitBulkForm(formGroup: FormGroup): Observable<string> {
+    if (formGroup.valid) {
+      return this.postMultiple(this.objectMapperBulk(formGroup.getRawValue()));
+    } else {
+      return of('invalid');
+    }
+  }
+
+  postMultiple(data: VisitorForm[]): Observable<string> {
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
+    return this.restClient.post<string>(this.multipleSubmitUrl, data, httpOptions);
+  }
+
   post(data: VisitorForm): Observable<string> {
     const httpOptions = {
-      headers: new HttpHeaders({'Content-Type':  'application/json'})
+      headers: new HttpHeaders({'Content-Type': 'application/json'})
     };
-    return this.restClient.post<string>(this.submitUrl, data, httpOptions);
+    return this.restClient.post<string>(this.submitUrl, data);
   }
 
   objectMapper(data: any) {
+    const obj = (<Array<any>>data.visitors).map(visitorObj => {
+      const visitor: VisitorForm = Object.assign({}, visitorObj);
+      visitor.dateTimeAllowedFrom = this.myDataPickerToDate(data.dateTimeAllowedFrom);
+      visitor.dateTimeAllowedTo = this.myDataPickerToDate(data.dateTimeAllowedTo);
+      visitor.accomodationReq = this.stringFalseToBoolean(visitorObj.accomodationReq);
+      return visitor;
+    });
+    return obj;
+  }
+
+  objectMapperBulk(data: any) {
     const obj = (<Array<any>>data.visitors).map(visitorObj => {
       const visitor: VisitorForm = new VisitorForm();
       visitor.visitorType = data.visitorType;
@@ -44,7 +72,7 @@ export class VisitorService {
       visitor.govtId = visitorObj.govtId;
       visitor.phoneNumber = visitorObj.phoneNumber;
       visitor.email = visitorObj.email;
-      visitor.accomodationReq = this.stringFalseToBoolean(visitorObj.accomodationReq);
+      visitor.accomodationReq = this.stringFalseToBooleanExcel(visitorObj.accomodationReq);
       visitor.empMail = data.empMail;
       visitor.location = data.location;
       return visitor;
@@ -69,6 +97,10 @@ export class VisitorService {
 
   stringFalseToBoolean(value: string): boolean {
     return value === 'true' ? true : false;
+  }
+  
+  stringFalseToBooleanExcel(value: string): boolean {
+    return value && value.toLocaleLowerCase() === 'yes' ? true : false;
   }
 
   validateForm(form: AbstractControl) {

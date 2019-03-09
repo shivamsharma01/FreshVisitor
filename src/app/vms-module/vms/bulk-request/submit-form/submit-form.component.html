@@ -1,79 +1,111 @@
-<div class="container jumbotron alert alert-success">
+<div class="container jumbotron bulk-submit-form">
   <div class="well well-lg">
     <h2><em>Bulk Form Data</em></h2>
   </div>
-
   <form [formGroup]="bulkForm">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <div class="row">
+            <label class="control-label col-sm-12" [for]="'dateTimeAllowedFrom'">Visitor Entry Date</label>
+            <div class="col-sm-12">
+              <my-date-picker
+                [class.date-form-error]="bulkForm.get('dateTimeAllowedFrom').touched && bulkForm.get('dateTimeAllowedFrom').invalid"
+                name="bulkForm.controls.dateTimeAllowedFrom" [options]="myDatePickerOptions" [placeholder]="'placeholder'"
+                formControlName="dateTimeAllowedFrom"></my-date-picker>
+            </div>
+            <div class="col-sm-12">
+              <app-error-component [control]="bulkForm.controls.dateTimeAllowedFrom"
+                [display]="'Visitor Entry Date'">
+              </app-error-component>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <div class="row">
+            <label class="control-label col-sm-12" [for]="'dateTimeAllowedTo'">Visitor Exit Date</label>
+            <div class="col-sm-12">
+              <my-date-picker
+                [class.date-form-error]="bulkForm.get('dateTimeAllowedTo').touched && bulkForm.get('dateTimeAllowedTo').invalid"
+                name="dateTimeAllowedTo" [options]="myDatePickerOptions" [placeholder]="'placeholder'"
+                formControlName="dateTimeAllowedTo"></my-date-picker>
+            </div>
+            <div class="col-sm-12">
+              <app-error-component [control]="bulkForm.controls.dateTimeAllowedTo" [display]="'Visitor Exit Date'">
+              </app-error-component>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div formArrayName="visitors" *ngFor="let item of bulkForm.get('visitors')?.controls; let i = index;">
       <div class="jumbotron visitor-form" [formGroupName]="i">
         <div class="form-group">
           <div class="row">
             <div class="col-sm-6">
-              <label class="control-label col-sm-12" [for]="'visitorName'">Visitor Name</label>
+              <label class="control-label col-sm-12" [for]="'name'">Visitor Name</label>
             </div>
             <div class="col-sm-6">
-              <input disabled=true [class.error-form]="bulkForm.get('visitors').at(i).get('visitorName').invalid" type="text"
-                class="form-control" [id]="'visitorName'"
-                [formControl]="bulkForm.get('visitors').at(i).get('visitorName')">
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="row">
-            <div class="col-sm-6">
-              <label class="control-label col-sm-12" [for]="'visitorMobileNo'">Visitor Mobile Number</label>
-            </div>
-            <div class="col-sm-6">
-              <input disabled=true type="text" class="form-control" [id]="'visitorMobileNo'"
-                [formControl]="bulkForm.get('visitors').at(i).get('visitorMobileNo')">
+              <input disabled=true [class.error-form]="bulkForm.get('visitors').at(i).get('name').invalid" type="text"
+                class="form-control" [id]="'name'" [formControl]="bulkForm.get('visitors').at(i).get('name')">
             </div>
           </div>
         </div>
         <div class="form-group">
           <div class="row">
             <div class="col-sm-6">
-              <label class="control-label col-sm-12" [for]="'visitLocation'">Visit Location</label>
+              <label class="control-label col-sm-12" [for]="'phoneNumber'">Visitor Phone Number</label>
             </div>
             <div class="col-sm-6">
-              <input disabled=true [class.error-form]="bulkForm.get('visitors').at(i).get('visitLocation').invalid" type="text"
-                class="form-control" [id]="'visitLocation'"
-                [formControl]="bulkForm.get('visitors').at(i).get('visitLocation')">
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="row">
-            <div class="col-sm-6">
-              <label class="control-label col-sm-12" [for]="'visitorEmailId'">Visitor Email</label>
-            </div>
-            <div class="col-sm-6">
-              <input disabled=true [class.error-form]="bulkForm.get('visitors').at(i).get('visitorEmailId').invalid" type="text"
-                class="form-control" [id]="'visitorEmailId'"
-                [formControl]="bulkForm.get('visitors').at(i).get('visitorEmailId')">
+              <input disabled=true type="text" class="form-control" [id]="'phoneNumber'"
+                [formControl]="bulkForm.get('visitors').at(i).get('phoneNumber')">
             </div>
           </div>
         </div>
         <div class="form-group">
           <div class="row">
             <div class="col-sm-6">
-              <label class="control-label col-sm-12" [for]="'visitorUIdType'">Visitor UId Type</label>
+              <label class="control-label col-sm-12" [for]="'location'">Visit Location</label>
             </div>
             <div class="col-sm-6">
-              <input disabled=true [class.error-form]="bulkForm.get('visitors').at(i).get('visitorUIdType').invalid" type="text"
-                class="form-control" [id]="'visitorUIdType'"
-                [formControl]="bulkForm.get('visitors').at(i).get('visitorUIdType')">
+              <input disabled=true [class.error-form]="bulkForm.get('visitors').at(i).get('location').invalid"
+                type="text" class="form-control" [id]="'location'"
+                [formControl]="bulkForm.get('visitors').at(i).get('location')">
             </div>
           </div>
         </div>
         <div class="form-group">
           <div class="row">
             <div class="col-sm-6">
-              <label class="control-label col-sm-12" [for]="'visitorUId'">Visitor UId</label>
+              <label class="control-label col-sm-12" [for]="'email'">Visitor Email</label>
             </div>
             <div class="col-sm-6">
-              <input disabled=true [class.error-form]="bulkForm.get('visitors').at(i).get('visitorUId').invalid" type="text"
-                class="form-control" [id]="'visitorUId'"
-                [formControl]="bulkForm.get('visitors').at(i).get('visitorUId')">
+              <input disabled=true [class.error-form]="bulkForm.get('visitors').at(i).get('email').invalid" type="text"
+                class="form-control" [id]="'email'" [formControl]="bulkForm.get('visitors').at(i).get('email')">
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-sm-6">
+              <label class="control-label col-sm-12" [for]="'idType'">Visitor UId Type</label>
+            </div>
+            <div class="col-sm-6">
+              <input disabled=true [class.error-form]="bulkForm.get('visitors').at(i).get('idType').invalid" type="text"
+                class="form-control" [id]="'idType'" [formControl]="bulkForm.get('visitors').at(i).get('idType')">
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-sm-6">
+              <label class="control-label col-sm-12" [for]="'govtId'">Visitor UId</label>
+            </div>
+            <div class="col-sm-6">
+              <input disabled=true [class.error-form]="bulkForm.get('visitors').at(i).get('govtId').invalid" type="text"
+                class="form-control" [id]="'govtId'" [formControl]="bulkForm.get('visitors').at(i).get('govtId')">
             </div>
           </div>
         </div>
@@ -83,9 +115,21 @@
               <label class="control-label col-sm-12" [for]="'visitorType'">Visitor Type</label>
             </div>
             <div class="col-sm-6">
-              <input disabled=true [class.error-form]="bulkForm.get('visitors').at(i).get('visitorType').invalid" type="text"
-                class="form-control" [id]="'visitorType'"
+              <input disabled=true [class.error-form]="bulkForm.get('visitors').at(i).get('visitorType').invalid"
+                type="text" class="form-control" [id]="'visitorType'"
                 [formControl]="bulkForm.get('visitors').at(i).get('visitorType')">
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-sm-6">
+              <label class="control-label col-sm-12" [for]="'accomodationReq'">Accomodation Applied</label>
+            </div>
+            <div class="col-sm-6">
+              <input disabled=true [class.error-form]="bulkForm.get('visitors').at(i).get('accomodationReq').invalid"
+                type="text" class="form-control" [id]="'accomodationReq'"
+                [formControl]="bulkForm.get('visitors').at(i).get('accomodationReq')">
             </div>
           </div>
         </div>

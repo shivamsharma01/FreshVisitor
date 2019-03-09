@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 import { User } from "../model/user";
 import { LoginClass } from "../model/login";
@@ -8,6 +8,7 @@ import { LoginClass } from "../model/login";
   providedIn: "root"
 })
 export class AuthService {
+  loginUrl: string = 'https://visitor-management-svc.cfapps.io/api/v1/validateLogin';
   isLoggedIn = false;
   user: User;
 
@@ -15,7 +16,10 @@ export class AuthService {
   }
 
   login(loginForm: LoginClass) {
-    return this.http.post('',loginForm)
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type':  'application/json'})
+    };
+    return this.http.post(this.loginUrl, loginForm, httpOptions);
   }
 
   logout(): void {

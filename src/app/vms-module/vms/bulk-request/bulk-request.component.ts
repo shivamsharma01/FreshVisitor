@@ -47,7 +47,6 @@ export class BulkRequestComponent implements OnInit {
 			const wb: XLSX.WorkBook = XLSX.read(e.target.result, {type: 'binary'});
 			const ws: XLSX.WorkSheet = wb.Sheets[wb.SheetNames[0]];
       this.uploadData = <VisitorData[]>(XLSX.utils.sheet_to_json(ws, {header: 0}));
-      console.log(this.uploadData);
 		};
 		reader.readAsBinaryString(target.files[0]);
   }

@@ -5,3 +5,11 @@ export class User {
   LoginStatus: string;
   EmployeeId: string;
 }
+
+export class UserResponse {
+  employeeId: string;
+  employeeName: string;
+  photo: string;
+  email: string;
+  jobLevel: string;
+}
