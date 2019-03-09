@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <h2 class="animated slideInDown delay-2">Welcome {{ user?.Name }}</h2>
+  <h2 class="animated slideInDown delay-2" *ngIf="user">Welcome {{ user.Name }}</h2>
   <table class="buttons">
     <tr *ngIf="user?.JobLevel < '6'">
       <td>

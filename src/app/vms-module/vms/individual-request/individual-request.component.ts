@@ -89,6 +89,8 @@ export class IndividualRequestComponent implements OnInit {
   submitForm() {
     this.visitorService.submitForm(this.visitorForm).subscribe(data => {
       this.router.navigate(["vms/dashboard"]);
+    }, error => {
+      this.router.navigate(["vms/dashboard"]);
     });
   }
 

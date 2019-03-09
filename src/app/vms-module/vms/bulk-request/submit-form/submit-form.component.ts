@@ -4,6 +4,7 @@ import { AuthService } from "src/app/auth/auth.service";
 import { VisitorService } from "src/app/vms-module/service/visitor.service";
 import { VisitorData } from "src/app/model/visitor-form-excel";
 import { IMyOptions } from "mydatepicker";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-submit-form",
@@ -14,11 +15,13 @@ export class SubmitFormComponent implements OnInit {
   @Input() data: VisitorData[];
   bulkForm: FormGroup;
   myDatePickerOptions: IMyOptions;
+  errorMsg: string;
 
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private visitorService: VisitorService) { }
+    private visitorService: VisitorService,
+    private router: Router) { }
 
   ngOnInit() {
     this.bulkForm = this.formBuilder.group({
@@ -69,7 +72,16 @@ export class SubmitFormComponent implements OnInit {
   }
 
   submit() {
+    if(this.bulkForm.invalid) {
+      this.errorMsg = 'Error in Form';
+    }
     this.visitorService.submitBulkForm(this.bulkForm).subscribe(data => {
+      console.log(data);
+      if (data === 'invalid') {
+        this.errorMsg = 'Error in Form';        
+      } else {
+        this.router.navigate(["vms/dashboard"]);
+      }
     });
   }
 
