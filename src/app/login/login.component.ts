@@ -46,7 +46,6 @@ export class LoginComponent implements OnInit {
   // }
 
   login() {
-    this.router.navigate(['vms/dashboard']);
     if (this.formGroup.invalid) {
       this.loginMessage = 'Please Enter Username and Password';
       return;
@@ -76,6 +75,7 @@ export class LoginComponent implements OnInit {
 
   logout() {
     this.authService.logout();
+    this.authService.user = null;
     this.loginMessage = null;
     this.setMessage();
   }
