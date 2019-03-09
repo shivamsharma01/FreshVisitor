@@ -45,7 +45,7 @@ export class VisitorService {
 
   post(data: VisitorForm): Observable<string> {
     const httpOptions = {
-      headers: new HttpHeaders({'Content-Type': 'application/json'})
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
     return this.restClient.post<string>(this.submitUrl, data);
   }
@@ -53,6 +53,7 @@ export class VisitorService {
   objectMapper(data: any) {
     const obj = (<Array<any>>data.visitors).map(visitorObj => {
       const visitor: VisitorForm = Object.assign({}, visitorObj);
+      visitor.photo = visitorObj.name + '.jpg';
       visitor.dateTimeAllowedFrom = this.myDataPickerToDate(data.dateTimeAllowedFrom);
       visitor.dateTimeAllowedTo = this.myDataPickerToDate(data.dateTimeAllowedTo);
       visitor.accomodationReq = this.stringFalseToBoolean(visitorObj.accomodationReq);
@@ -66,7 +67,7 @@ export class VisitorService {
       const visitor: VisitorForm = new VisitorForm();
       visitor.visitorType = data.visitorType;
       visitor.name = visitorObj.name;
-      visitor.photo = visitorObj.photo;
+      visitor.photo = visitorObj.name + '.jpg';
       visitor.dateTimeAllowedFrom = this.myDataPickerToDate(data.dateTimeAllowedFrom);
       visitor.dateTimeAllowedTo = this.myDataPickerToDate(data.dateTimeAllowedTo);
       visitor.idType = visitorObj.idType;
@@ -99,7 +100,7 @@ export class VisitorService {
   stringFalseToBoolean(value: string): boolean {
     return value === 'true' ? true : false;
   }
-  
+
   stringFalseToBooleanExcel(value: string): boolean {
     return value && value.toLocaleLowerCase() === 'yes' ? true : false;
   }
@@ -141,8 +142,8 @@ export class VisitorService {
     };
   }
 
-  getRequestedForms(empId: string) : Observable<VisitorForm[]>{
-    return this.restClient.get<VisitorForm[]>(this.getSubmitted+empId);
+  getRequestedForms(empId: string): Observable<VisitorForm[]> {
+    return this.restClient.get<VisitorForm[]>(this.getSubmitted + empId);
   }
 }
 

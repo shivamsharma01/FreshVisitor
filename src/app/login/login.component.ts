@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
   //   user.JobLevel = '6';
   //   user.LoginStatus = 'Success';
   //   this.authService.user = user;
-  //   this.authService.user.Email = 'asdhagd@gmail.com';
+  //   this.authService.user.Email = 'jon@infosys.com';
   //   this.authService.isLoggedIn = true;
   //   this.router.navigate(['vms/dashboard']);
   // }
@@ -68,6 +68,8 @@ export class LoginComponent implements OnInit {
           this.authService.user = null;
           this.spinner.hide();
         }
+      }, error=> {
+        this.spinner.hide();
       });
     }
   }
